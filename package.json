@@ -1,0 +1,73 @@
+{
+  "name": "@palmabit/react-cookie-law",
+  "version": "0.1.0",
+  "description": "React Cookie banner GDPR compliance",
+  "main": "lib",
+  "author": "Alessandro Sarzina <a.sarzina@palmabit.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Palmabit-IT/react-cookie-law.git"
+  },
+  "keywords": [
+    "gdpr",
+    "cookie",
+    "cookie law",
+    "banner",
+    "cookie banner",
+    "react"
+  ],
+  "scripts": {
+    "build": "./node_modules/.bin/webpack -p",
+    "test": "jest --coverage --watchAll",
+    "precommit": "lint-staged",
+    "prepublish": "npm run build",
+    "lint": "eslint 'src/**/*.js'"
+  },
+  "dependencies": {
+    "prop-types": "^15.6.2",
+    "react": "^16",
+    "react-cookie": "^3.0.4"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-transform-modules-commonjs": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-core": "^7.0.0-bridge",
+    "babel-loader": "^8.0.2",
+    "clean-webpack-plugin": "^0.1.19",
+    "enzyme": "^3.6.0",
+    "enzyme-adapter-react-16": "^1.5.0",
+    "eslint": "^5.5.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jest": "^21.22.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-react": "^7.11.1",
+    "jest": "^23.5.0",
+    "lint-staged": "^7.2.2",
+    "react-dom": "^16",
+    "webpack": "^4.17.2",
+    "webpack-cli": "^3.1.0"
+  },
+  "resolutions": {
+    "babel-core": "7.0.0-bridge.0"
+  },
+  "jest": {
+    "setupFiles": [
+      "<rootDir>/test/setup.js"
+    ]
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,json}": [
+      "eslint 'src/**/*.js' --fix",
+      "git add --all ."
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run precommit"
+    }
+  }
+}

@@ -1,0 +1,44 @@
+# --------------------
+# OSX Files
+# --------------------
+.DS_Store
+
+# --------------------
+# Windows Files
+# --------------------
+Thumbs.db
+
+# --------------------
+# IntelliJ Files
+# --------------------
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# --------------------
+# Visual Studio Code
+# --------------------
+.vscode
+
+# --------------------
+# Node Files
+# --------------------
+.nodemonignore
+npm-debug.log
+node_modules/
+
+# --------------------
+# SASS Files
+# --------------------
+.sass-cache/
+
+# --------------------
+# user specific
+# --------------------
+coverage
+!.gitkeep
+todo.txt
+build/
+dist/
+temp/
