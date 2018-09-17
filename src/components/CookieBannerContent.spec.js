@@ -74,4 +74,57 @@ describe('CookieBannerContent component', () => {
 
     expect(props.onDecline).toHaveBeenCalledTimes(1);
   });
+
+  test('should hide preferences checkbox', () => {
+    const props = {
+      onDecline: jest.fn(),
+      showPreferencesOption: false,
+    };
+
+    const component = mount(
+      <CookieBannerContent {...props} />,
+    );
+
+    expect(component.find('#check-preferences-cookies').exists()).toBeFalsy();
+  });
+
+  test('should hide statistics checkbox', () => {
+    const props = {
+      onDecline: jest.fn(),
+      showStatisticsOption: false,
+    };
+
+    const component = mount(
+      <CookieBannerContent {...props} />,
+    );
+
+    expect(component.find('#check-statistics-cookies').exists()).toBeFalsy();
+  });
+
+  test('should hide marketing checkbox', () => {
+    const props = {
+      onDecline: jest.fn(),
+      showMarketingOption: false,
+    };
+
+    const component = mount(
+      <CookieBannerContent {...props} />,
+    );
+
+    expect(component.find('#check-marketing-cookies').exists()).toBeFalsy();
+  });
+
+  test('should show all checkboxes as default', () => {
+    const props = {
+      onDecline: jest.fn(),
+    };
+
+    const component = mount(
+      <CookieBannerContent {...props} />,
+    );
+
+    expect(component.find('#check-preferences-cookies').exists()).toBeTruthy();
+    expect(component.find('#check-statistics-cookies').exists()).toBeTruthy();
+    expect(component.find('#check-marketing-cookies').exists()).toBeTruthy();
+  });
 });

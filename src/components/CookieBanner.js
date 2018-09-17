@@ -122,6 +122,7 @@ class CookieBanner extends React.Component {
 
   consetsCallback() {
     const {
+      onAccept = Function,
       onAcceptPreferences = Function,
       onAcceptStatistics = Function,
       onAcceptMarketing = Function,
@@ -133,6 +134,8 @@ class CookieBanner extends React.Component {
     const hasPreferencesCookie = this.cookies.get(PREFERENCES_COOKIE);
     const hasStatisticsCookie = this.cookies.get(STATISTICS_COOKIE);
     const hasMarketingCookie = this.cookies.get(MARKETING_COOKIE);
+
+    onAccept();
 
     if (hasPreferencesCookie) {
       onAcceptPreferences();
@@ -166,6 +169,9 @@ class CookieBanner extends React.Component {
       showDeclineButton,
       acceptButtonText,
       declineButtonText,
+      showPreferencesOption,
+      showStatisticsOption,
+      showMarketingOption,
     } = this.props;
 
     if (this.cookies.get(CONSENT_GIVEN)) {
@@ -185,6 +191,9 @@ class CookieBanner extends React.Component {
       showDeclineButton,
       acceptButtonText,
       declineButtonText,
+      showPreferencesOption,
+      showStatisticsOption,
+      showMarketingOption,
       onTogglePreferencesCookies: this.onTogglePreferencesCookies,
       onToggleStatisticsCookies: this.onToggleStatisticsCookies,
       onToggleMarketingCookies: this.onToggleMarketingCookies,
@@ -209,6 +218,10 @@ CookieBanner.protoTypes = {
   declineButtonText: PropTypes.string,
   showDeclineButton: PropTypes.bool,
   dismissOnScroll: PropTypes.bool,
+  showPreferencesOption: PropTypes.bool,
+  showStatisticsOption: PropTypes.bool,
+  showMarketingOption: PropTypes.bool,
+  onAccept: PropTypes.func,
   onAcceptPreferences: PropTypes.func,
   onAcceptStatistics: PropTypes.func,
   onAcceptMarketing: PropTypes.func,

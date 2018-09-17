@@ -15,6 +15,9 @@ export default (props = {}) => {
     showDeclineButton = false,
     acceptButtonText = 'Accept',
     declineButtonText = 'Decline',
+    showPreferencesOption = true,
+    showStatisticsOption = true,
+    showMarketingOption = true,
     onTogglePreferencesCookies = Function,
     onToggleStatisticsCookies = Function,
     onToggleMarketingCookies = Function,
@@ -51,27 +54,40 @@ export default (props = {}) => {
             checked
           />
 
-          <CookieOption
-            id="check-preferences-cookies"
-            text={preferencesOptionText}
-            styles={cookieOptionStyle}
-            onChange={onTogglePreferencesCookies}
-            checked
-          />
-          <CookieOption
-            id="check-statistics-cookies"
-            text={statisticsOptionText}
-            styles={cookieOptionStyle}
-            onChange={onToggleStatisticsCookies}
-            checked
-          />
+          {
+            showPreferencesOption && (
+              <CookieOption
+                id="check-preferences-cookies"
+                text={preferencesOptionText}
+                styles={cookieOptionStyle}
+                onChange={onTogglePreferencesCookies}
+                checked
+              />
+            )
+          }
 
-          <CookieOption
-            id="check-marketing-cookies"
-            text={marketingOptionText}
-            styles={cookieOptionStyle}
-            onChange={onToggleMarketingCookies}
-          />
+          {
+            showStatisticsOption && (
+              <CookieOption
+                id="check-statistics-cookies"
+                text={statisticsOptionText}
+                styles={cookieOptionStyle}
+                onChange={onToggleStatisticsCookies}
+                checked
+              />
+            )
+          }
+
+          {
+            showMarketingOption && (
+              <CookieOption
+                id="check-marketing-cookies"
+                text={marketingOptionText}
+                styles={cookieOptionStyle}
+                onChange={onToggleMarketingCookies}
+              />
+            )
+          }
         </div>
 
         <a href={policyLink} className="react-cookie-law-policy" style={policyStyle}>{privacyPolicyLinkText}</a>
