@@ -5,13 +5,13 @@ A React Cookie Banner component GDPR compliance.
 ## Install
 
 ```
-yarn add react-cookie-law
+yarn add @palmabit/react-cookie-law
 ```
 
 or
 
 ```
-npm install --save react-cookie-law
+npm install --save @palmabit/react-cookie-law
 ```
 
 ## Usage
