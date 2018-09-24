@@ -62,9 +62,11 @@ ShallowWrapper {
               Object {
                 "checkboxStyle": Object {
                   "cursor": "pointer",
+                  "height": "14px",
                   "left": "0",
                   "position": "absolute",
                   "top": "4px",
+                  "width": "14px",
                   "zIndex": "2",
                 },
                 "optionLabelStyle": Object {
@@ -101,9 +103,11 @@ ShallowWrapper {
               Object {
                 "checkboxStyle": Object {
                   "cursor": "pointer",
+                  "height": "14px",
                   "left": "0",
                   "position": "absolute",
                   "top": "4px",
+                  "width": "14px",
                   "zIndex": "2",
                 },
                 "optionLabelStyle": Object {
@@ -140,9 +144,11 @@ ShallowWrapper {
               Object {
                 "checkboxStyle": Object {
                   "cursor": "pointer",
+                  "height": "14px",
                   "left": "0",
                   "position": "absolute",
                   "top": "4px",
+                  "width": "14px",
                   "zIndex": "2",
                 },
                 "optionLabelStyle": Object {
@@ -178,9 +184,11 @@ ShallowWrapper {
               Object {
                 "checkboxStyle": Object {
                   "cursor": "pointer",
+                  "height": "14px",
                   "left": "0",
                   "position": "absolute",
                   "top": "4px",
+                  "width": "14px",
                   "zIndex": "2",
                 },
                 "optionLabelStyle": Object {
@@ -310,9 +318,11 @@ ShallowWrapper {
                 Object {
                   "checkboxStyle": Object {
                     "cursor": "pointer",
+                    "height": "14px",
                     "left": "0",
                     "position": "absolute",
                     "top": "4px",
+                    "width": "14px",
                     "zIndex": "2",
                   },
                   "optionLabelStyle": Object {
@@ -349,9 +359,11 @@ ShallowWrapper {
                 Object {
                   "checkboxStyle": Object {
                     "cursor": "pointer",
+                    "height": "14px",
                     "left": "0",
                     "position": "absolute",
                     "top": "4px",
+                    "width": "14px",
                     "zIndex": "2",
                   },
                   "optionLabelStyle": Object {
@@ -388,9 +400,11 @@ ShallowWrapper {
                 Object {
                   "checkboxStyle": Object {
                     "cursor": "pointer",
+                    "height": "14px",
                     "left": "0",
                     "position": "absolute",
                     "top": "4px",
+                    "width": "14px",
                     "zIndex": "2",
                   },
                   "optionLabelStyle": Object {
@@ -426,9 +440,11 @@ ShallowWrapper {
                 Object {
                   "checkboxStyle": Object {
                     "cursor": "pointer",
+                    "height": "14px",
                     "left": "0",
                     "position": "absolute",
                     "top": "4px",
+                    "width": "14px",
                     "zIndex": "2",
                   },
                   "optionLabelStyle": Object {
@@ -552,9 +568,11 @@ ShallowWrapper {
                   Object {
                     "checkboxStyle": Object {
                       "cursor": "pointer",
+                      "height": "14px",
                       "left": "0",
                       "position": "absolute",
                       "top": "4px",
+                      "width": "14px",
                       "zIndex": "2",
                     },
                     "optionLabelStyle": Object {
@@ -591,9 +609,11 @@ ShallowWrapper {
                   Object {
                     "checkboxStyle": Object {
                       "cursor": "pointer",
+                      "height": "14px",
                       "left": "0",
                       "position": "absolute",
                       "top": "4px",
+                      "width": "14px",
                       "zIndex": "2",
                     },
                     "optionLabelStyle": Object {
@@ -630,9 +650,11 @@ ShallowWrapper {
                   Object {
                     "checkboxStyle": Object {
                       "cursor": "pointer",
+                      "height": "14px",
                       "left": "0",
                       "position": "absolute",
                       "top": "4px",
+                      "width": "14px",
                       "zIndex": "2",
                     },
                     "optionLabelStyle": Object {
@@ -668,9 +690,11 @@ ShallowWrapper {
                   Object {
                     "checkboxStyle": Object {
                       "cursor": "pointer",
+                      "height": "14px",
                       "left": "0",
                       "position": "absolute",
                       "top": "4px",
+                      "width": "14px",
                       "zIndex": "2",
                     },
                     "optionLabelStyle": Object {
@@ -719,9 +743,11 @@ ShallowWrapper {
                 "styles": Object {
                   "checkboxStyle": Object {
                     "cursor": "pointer",
+                    "height": "14px",
                     "left": "0",
                     "position": "absolute",
                     "top": "4px",
+                    "width": "14px",
                     "zIndex": "2",
                   },
                   "optionLabelStyle": Object {
@@ -764,9 +790,11 @@ ShallowWrapper {
                 "styles": Object {
                   "checkboxStyle": Object {
                     "cursor": "pointer",
+                    "height": "14px",
                     "left": "0",
                     "position": "absolute",
                     "top": "4px",
+                    "width": "14px",
                     "zIndex": "2",
                   },
                   "optionLabelStyle": Object {
@@ -809,9 +837,11 @@ ShallowWrapper {
                 "styles": Object {
                   "checkboxStyle": Object {
                     "cursor": "pointer",
+                    "height": "14px",
                     "left": "0",
                     "position": "absolute",
                     "top": "4px",
+                    "width": "14px",
                     "zIndex": "2",
                   },
                   "optionLabelStyle": Object {
@@ -853,9 +883,11 @@ ShallowWrapper {
                 "styles": Object {
                   "checkboxStyle": Object {
                     "cursor": "pointer",
+                    "height": "14px",
                     "left": "0",
                     "position": "absolute",
                     "top": "4px",
+                    "width": "14px",
                     "zIndex": "2",
                   },
                   "optionLabelStyle": Object {
@@ -1049,9 +1081,11 @@ ShallowWrapper {
                 Object {
                   "checkboxStyle": Object {
                     "cursor": "pointer",
+                    "height": "14px",
                     "left": "0",
                     "position": "absolute",
                     "top": "4px",
+                    "width": "14px",
                     "zIndex": "2",
                   },
                   "optionLabelStyle": Object {
@@ -1088,9 +1122,11 @@ ShallowWrapper {
                 Object {
                   "checkboxStyle": Object {
                     "cursor": "pointer",
+                    "height": "14px",
                     "left": "0",
                     "position": "absolute",
                     "top": "4px",
+                    "width": "14px",
                     "zIndex": "2",
                   },
                   "optionLabelStyle": Object {
@@ -1127,9 +1163,11 @@ ShallowWrapper {
                 Object {
                   "checkboxStyle": Object {
                     "cursor": "pointer",
+                    "height": "14px",
                     "left": "0",
                     "position": "absolute",
                     "top": "4px",
+                    "width": "14px",
                     "zIndex": "2",
                   },
                   "optionLabelStyle": Object {
@@ -1165,9 +1203,11 @@ ShallowWrapper {
                 Object {
                   "checkboxStyle": Object {
                     "cursor": "pointer",
+                    "height": "14px",
                     "left": "0",
                     "position": "absolute",
                     "top": "4px",
+                    "width": "14px",
                     "zIndex": "2",
                   },
                   "optionLabelStyle": Object {
@@ -1297,9 +1337,11 @@ ShallowWrapper {
                   Object {
                     "checkboxStyle": Object {
                       "cursor": "pointer",
+                      "height": "14px",
                       "left": "0",
                       "position": "absolute",
                       "top": "4px",
+                      "width": "14px",
                       "zIndex": "2",
                     },
                     "optionLabelStyle": Object {
@@ -1336,9 +1378,11 @@ ShallowWrapper {
                   Object {
                     "checkboxStyle": Object {
                       "cursor": "pointer",
+                      "height": "14px",
                       "left": "0",
                       "position": "absolute",
                       "top": "4px",
+                      "width": "14px",
                       "zIndex": "2",
                     },
                     "optionLabelStyle": Object {
@@ -1375,9 +1419,11 @@ ShallowWrapper {
                   Object {
                     "checkboxStyle": Object {
                       "cursor": "pointer",
+                      "height": "14px",
                       "left": "0",
                       "position": "absolute",
                       "top": "4px",
+                      "width": "14px",
                       "zIndex": "2",
                     },
                     "optionLabelStyle": Object {
@@ -1413,9 +1459,11 @@ ShallowWrapper {
                   Object {
                     "checkboxStyle": Object {
                       "cursor": "pointer",
+                      "height": "14px",
                       "left": "0",
                       "position": "absolute",
                       "top": "4px",
+                      "width": "14px",
                       "zIndex": "2",
                     },
                     "optionLabelStyle": Object {
@@ -1539,9 +1587,11 @@ ShallowWrapper {
                     Object {
                       "checkboxStyle": Object {
                         "cursor": "pointer",
+                        "height": "14px",
                         "left": "0",
                         "position": "absolute",
                         "top": "4px",
+                        "width": "14px",
                         "zIndex": "2",
                       },
                       "optionLabelStyle": Object {
@@ -1578,9 +1628,11 @@ ShallowWrapper {
                     Object {
                       "checkboxStyle": Object {
                         "cursor": "pointer",
+                        "height": "14px",
                         "left": "0",
                         "position": "absolute",
                         "top": "4px",
+                        "width": "14px",
                         "zIndex": "2",
                       },
                       "optionLabelStyle": Object {
@@ -1617,9 +1669,11 @@ ShallowWrapper {
                     Object {
                       "checkboxStyle": Object {
                         "cursor": "pointer",
+                        "height": "14px",
                         "left": "0",
                         "position": "absolute",
                         "top": "4px",
+                        "width": "14px",
                         "zIndex": "2",
                       },
                       "optionLabelStyle": Object {
@@ -1655,9 +1709,11 @@ ShallowWrapper {
                     Object {
                       "checkboxStyle": Object {
                         "cursor": "pointer",
+                        "height": "14px",
                         "left": "0",
                         "position": "absolute",
                         "top": "4px",
+                        "width": "14px",
                         "zIndex": "2",
                       },
                       "optionLabelStyle": Object {
@@ -1706,9 +1762,11 @@ ShallowWrapper {
                   "styles": Object {
                     "checkboxStyle": Object {
                       "cursor": "pointer",
+                      "height": "14px",
                       "left": "0",
                       "position": "absolute",
                       "top": "4px",
+                      "width": "14px",
                       "zIndex": "2",
                     },
                     "optionLabelStyle": Object {
@@ -1751,9 +1809,11 @@ ShallowWrapper {
                   "styles": Object {
                     "checkboxStyle": Object {
                       "cursor": "pointer",
+                      "height": "14px",
                       "left": "0",
                       "position": "absolute",
                       "top": "4px",
+                      "width": "14px",
                       "zIndex": "2",
                     },
                     "optionLabelStyle": Object {
@@ -1796,9 +1856,11 @@ ShallowWrapper {
                   "styles": Object {
                     "checkboxStyle": Object {
                       "cursor": "pointer",
+                      "height": "14px",
                       "left": "0",
                       "position": "absolute",
                       "top": "4px",
+                      "width": "14px",
                       "zIndex": "2",
                     },
                     "optionLabelStyle": Object {
@@ -1840,9 +1902,11 @@ ShallowWrapper {
                   "styles": Object {
                     "checkboxStyle": Object {
                       "cursor": "pointer",
+                      "height": "14px",
                       "left": "0",
                       "position": "absolute",
                       "top": "4px",
+                      "width": "14px",
                       "zIndex": "2",
                     },
                     "optionLabelStyle": Object {
