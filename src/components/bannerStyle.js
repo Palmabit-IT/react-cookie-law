@@ -58,6 +58,8 @@ export default {
     position: 'absolute',
     top: '4px',
     left: '0',
+    width: '14px',
+    height: '14px',
     zIndex: '2',
     cursor: 'pointer',
   },
