@@ -1,5 +1,7 @@
 # React Cookie Law
 
+[![npm version](https://badge.fury.io/js/%40palmabit%2Freact-cookie-law.svg)](https://badge.fury.io/js/%40palmabit%2Freact-cookie-law) [![Build Status](https://travis-ci.org/Palmabit-IT/react-cookie-law.svg?branch=master)](https://travis-ci.org/Palmabit-IT/react-cookie-law)
+
 A React Cookie Banner component GDPR compliance.
 
 ## Install

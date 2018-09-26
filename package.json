@@ -1,6 +1,6 @@
 {
   "name": "@palmabit/react-cookie-law",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "React Cookie banner GDPR compliance",
   "author": "Alessandro Sarzina <a.sarzina@palmabit.com>",
   "license": "MIT",
@@ -30,7 +30,8 @@
     "test": "jest --coverage",
     "precommit": "lint-staged",
     "prepublish": "npm test && npm run build",
-    "lint": "eslint 'src/**/*.js'"
+    "lint": "eslint 'src/**/*.js'",
+    "testCI": "npm run test && cat coverage/lcov.info | coveralls"
   },
   "dependencies": {
     "prop-types": "^15.6.2",
@@ -45,6 +46,7 @@
     "babel-core": "^7.0.0-bridge",
     "babel-loader": "^8.0.2",
     "clean-webpack-plugin": "^0.1.19",
+    "coveralls": "^3.0.2",
     "enzyme": "^3.6.0",
     "enzyme-adapter-react-16": "^1.5.0",
     "eslint": "^5.5.0",
