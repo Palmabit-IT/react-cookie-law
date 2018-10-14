@@ -4,6 +4,8 @@
 
 A React Cookie Banner component GDPR compliance.
 
+![Preview](./banner_preview.png)
+
 ## Install
 
 ```
