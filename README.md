@@ -4,7 +4,7 @@
 
 A React Cookie Banner component GDPR compliance.
 
-![Preview](./banner_preview.png)
+![Preview](https://raw.githubusercontent.com/Palmabit-IT/react-cookie-law/master/banner_preview.png)
 
 ## Install
 
