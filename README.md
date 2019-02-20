@@ -21,7 +21,7 @@ npm install --save @palmabit/react-cookie-law
 ## Usage
 
 ```js
-import CookieBanner from 'react-cookie-law';
+import { CookieBanner } from '@palmabit/react-cookie-law';
 
 React.renderComponent(
   <div>
