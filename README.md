@@ -26,7 +26,7 @@ import { CookieBanner } from '@palmabit/react-cookie-law';
 React.renderComponent(
   <div>
     <CookieBanner
-      message="Cookie banner messate"
+      message="Cookie banner message"
       onAccept = {() => {}}
       onAcceptPreferences = {() => {}}
       onAcceptStatistics = {() => {}}
