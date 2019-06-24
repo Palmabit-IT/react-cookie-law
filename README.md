@@ -67,7 +67,7 @@ React.renderComponent(
 
 ```js
 <CookieBanner
-  message="Cookie banner messate"
+  message="Cookie banner message"
   styles={{
     dialog: { backgroundColor: 'red' }
   }}
