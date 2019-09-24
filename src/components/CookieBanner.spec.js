@@ -30,6 +30,15 @@ describe('CookieBanner component', () => {
     expect(component.find(CookieBannerContent)).toHaveLength(1);
   });
 
+
+  test('should be rendered with custom class', () => {
+    const component = mount(
+      <CookieBanner className={'testclass'} message="Custom text" />,
+    );
+
+    expect(component.hasClass('testclass')).toBe(true)
+  });
+
   test('shouldn\'t show banner if cookies are already accepted', () => {
     document.cookie = 'rcl_consent_given=true';
 

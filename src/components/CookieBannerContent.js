@@ -5,6 +5,7 @@ import bannerStyle from './bannerStyle';
 export default (props = {}) => {
   const {
     styles = {},
+    className,
     message = 'No text',
     policyLink = '/#',
     privacyPolicyLinkText = 'Privacy Policy',
@@ -41,7 +42,7 @@ export default (props = {}) => {
   const cookieOptionStyle = { optionWrapperStyle, optionLabelStyle, checkboxStyle };
 
   return (
-    <div className="react-cookie-law-dialog" style={dialogStyle}>
+    <div className={`react-cookie-law-dialog ${className}`}  style={dialogStyle}>
       <div className="react-cookie-law-container" style={containerStyle}>
         <div className="react-cookie-law-msg" style={messageStyle}>{message}</div>
 
