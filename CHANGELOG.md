@@ -1,3 +1,10 @@
+## [0.3.0](https://github.com/Palmabit-IT/react-cookie-law/tree/0.3.0) (2019-10-17)
+[Full Changelog](https://github.com/Palmabit-IT/react-cookie-law/compare/0.2.3...0.3.0)
+
+### Added
+
+- Add `className` param  
+
 ## [0.2.3](https://github.com/Palmabit-IT/react-cookie-law/tree/0.2.3) (2018-11-02)
 [Full Changelog](https://github.com/Palmabit-IT/react-cookie-law/compare/0.2.0...0.2.3)
 

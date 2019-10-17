@@ -268,7 +268,7 @@ ShallowWrapper {
           </button>
         </div>
       </div>,
-      "className": "react-cookie-law-dialog undefined",
+      "className": "react-cookie-law-dialog ",
       "style": Object {
         "backgroundColor": "#f8f7f7",
         "left": "0",
@@ -1287,7 +1287,7 @@ ShallowWrapper {
             </button>
           </div>
         </div>,
-        "className": "react-cookie-law-dialog undefined",
+        "className": "react-cookie-law-dialog ",
         "style": Object {
           "backgroundColor": "#f8f7f7",
           "left": "0",

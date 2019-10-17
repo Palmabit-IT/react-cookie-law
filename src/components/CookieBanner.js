@@ -159,6 +159,7 @@ class CookieBanner extends React.Component {
   render() {
     const {
       styles,
+      className,
       message,
       policyLink,
       privacyPolicyLinkText,
@@ -181,7 +182,7 @@ class CookieBanner extends React.Component {
 
     const contentProps = {
       styles,
-      className: this.props.className,
+      className,
       message,
       policyLink,
       privacyPolicyLinkText,
