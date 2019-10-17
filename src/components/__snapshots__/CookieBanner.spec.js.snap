@@ -20,6 +20,7 @@ ShallowWrapper {
     "nodeType": "function",
     "props": Object {
       "acceptButtonText": undefined,
+      "className": undefined,
       "declineButtonText": undefined,
       "marketingOptionText": undefined,
       "message": "Text",
@@ -50,6 +51,7 @@ ShallowWrapper {
       "nodeType": "function",
       "props": Object {
         "acceptButtonText": undefined,
+        "className": undefined,
         "declineButtonText": undefined,
         "marketingOptionText": undefined,
         "message": "Text",
