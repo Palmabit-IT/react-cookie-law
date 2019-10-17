@@ -41,6 +41,7 @@ React.renderComponent(
 
 |Name|Type|Default|Description|
 |----|----|-------|-----------|
+| **className** | string | | **optional**. Classes |
 | **message** | string | | **Required**. Custom text of the banner |
 | **policyLink** | string | "/#" | *optional*. Link to privacy policy page |
 | **privacyPolicyLinkText** | string | "Privacy Policy" | *optional*. Text for the privacy policy link |
