@@ -33,7 +33,7 @@ describe('CookieOption component', () => {
     expect(component.find('input').prop('id')).toBe('check-cookies');
     expect(component.find('.react-cookie-law-option-checkbox').props().disabled).toBeFalsy();
     expect(component.find('.react-cookie-law-option-checkbox').props().checked).toBeFalsy();
-    expect(component.find('span').text()).toBe('Custom label text');
+    expect(component.find('label').text()).toBe('Custom label text');
   });
 
   test('should be rendered checked element', () => {

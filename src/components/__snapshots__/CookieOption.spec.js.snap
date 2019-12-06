@@ -30,9 +30,11 @@ ShallowWrapper {
           onChange={[Function]}
           type="checkbox"
         />,
-        <span>
+        <label
+          for="check-required-cookies"
+        >
           Necessary
-        </span>,
+        </label>,
       ],
       "className": "react-cookie-law-option-wrapper",
       "style": undefined,
@@ -61,11 +63,12 @@ ShallowWrapper {
         "nodeType": "host",
         "props": Object {
           "children": "Necessary",
+          "for": "check-required-cookies",
           "style": undefined,
         },
         "ref": null,
         "rendered": "Necessary",
-        "type": "span",
+        "type": "label",
       },
     ],
     "type": "div",
@@ -84,9 +87,11 @@ ShallowWrapper {
             onChange={[Function]}
             type="checkbox"
           />,
-          <span>
+          <label
+            for="check-required-cookies"
+          >
             Necessary
-          </span>,
+          </label>,
         ],
         "className": "react-cookie-law-option-wrapper",
         "style": undefined,
@@ -115,11 +120,12 @@ ShallowWrapper {
           "nodeType": "host",
           "props": Object {
             "children": "Necessary",
+            "for": "check-required-cookies",
             "style": undefined,
           },
           "ref": null,
           "rendered": "Necessary",
-          "type": "span",
+          "type": "label",
         },
       ],
       "type": "div",
