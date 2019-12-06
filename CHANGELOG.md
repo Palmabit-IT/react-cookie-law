@@ -1,3 +1,10 @@
+## [0.3.1](2019-12-06)
+[Full Changelog](https://github.com/Palmabit-IT/react-cookie-law/compare/0.2.3...0.3.1)
+
+### Updated
+
+- Update label for checkbox
+
 ## [0.3.0](https://github.com/Palmabit-IT/react-cookie-law/tree/0.3.0) (2019-10-17)
 [Full Changelog](https://github.com/Palmabit-IT/react-cookie-law/compare/0.2.3...0.3.0)
 
