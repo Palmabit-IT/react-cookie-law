@@ -27,6 +27,7 @@ React.renderComponent(
   <div>
     <CookieBanner
       message="Cookie banner message"
+      wholeDomain={true}
       onAccept = {() => {}}
       onAcceptPreferences = {() => {}}
       onAcceptStatistics = {() => {}}
@@ -43,6 +44,7 @@ React.renderComponent(
 |----|----|-------|-----------|
 | **className** | string | | **optional**. Classes |
 | **message** | string | | **Required**. Custom text of the banner |
+| **wholeDomain** | bool | false | *optional*. Enable or disable the root path '/' option when a cookie is set |
 | **policyLink** | string | "/#" | *optional*. Link to privacy policy page |
 | **privacyPolicyLinkText** | string | "Privacy Policy" | *optional*. Text for the privacy policy link |
 | **necessaryOptionText** | string | "Necessary" | *optional*. Text for the *necessary* cookies checkbox |
