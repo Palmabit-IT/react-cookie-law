@@ -2,8 +2,9 @@ import { Cookies as ReactCookies } from 'react-cookie';
 import { getExpirationDate } from './helpers';
 
 export default class Cookies {
-  constructor() {
+  constructor(wholeDomain=false) {
     this.cookies = new ReactCookies();
+    this.whole_domain = wholeDomain;
   }
 
   get(cookie) {
@@ -11,8 +12,10 @@ export default class Cookies {
   }
 
   set(cookie, cookieExpiration) {
+    const optionPath = this.whole_domain ? { path: '/' } : {};
     this.cookies.set(cookie, true, {
       expires: cookieExpiration || getExpirationDate(),
+      ...{optionPath}
     });
   }
 

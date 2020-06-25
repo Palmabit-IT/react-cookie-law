@@ -27,7 +27,7 @@ class CookieBanner extends React.Component {
     this.decline = this.decline.bind(this);
     this.consetsCallback = this.consetsCallback.bind(this);
 
-    this.cookies = new Cookies();
+    this.cookies = new Cookies(this.props.wholeDomain);
   }
 
   componentDidMount() {
@@ -211,6 +211,7 @@ CookieBanner.protoTypes = {
   className: PropTypes.string,
   styles: PropTypes.object,
   message: PropTypes.string.isRequired,
+  wholeDomain: PropTypes.bool,
   policyLink: PropTypes.string,
   privacyPolicyLinkText: PropTypes.string,
   necessaryOptionText: PropTypes.string,
