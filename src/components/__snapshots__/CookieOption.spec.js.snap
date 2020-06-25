@@ -31,7 +31,7 @@ ShallowWrapper {
           type="checkbox"
         />,
         <label
-          for="check-required-cookies"
+          htmlFor="check-required-cookies"
         >
           Necessary
         </label>,
@@ -63,7 +63,7 @@ ShallowWrapper {
         "nodeType": "host",
         "props": Object {
           "children": "Necessary",
-          "for": "check-required-cookies",
+          "htmlFor": "check-required-cookies",
           "style": undefined,
         },
         "ref": null,
@@ -88,7 +88,7 @@ ShallowWrapper {
             type="checkbox"
           />,
           <label
-            for="check-required-cookies"
+            htmlFor="check-required-cookies"
           >
             Necessary
           </label>,
@@ -120,7 +120,7 @@ ShallowWrapper {
           "nodeType": "host",
           "props": Object {
             "children": "Necessary",
-            "for": "check-required-cookies",
+            "htmlFor": "check-required-cookies",
             "style": undefined,
           },
           "ref": null,
