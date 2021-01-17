@@ -1,97 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`CookieBanner component should be rendered 1`] = `
-ShallowWrapper {
-  Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <CookieBanner
-    message="Text"
-  />,
-  Symbol(enzyme.__renderer__): Object {
-    "batchedUpdates": [Function],
-    "getNode": [Function],
-    "render": [Function],
-    "simulateError": [Function],
-    "simulateEvent": [Function],
-    "unmount": [Function],
-  },
-  Symbol(enzyme.__node__): Object {
-    "instance": null,
-    "key": undefined,
-    "nodeType": "function",
-    "props": Object {
-      "acceptButtonText": undefined,
-      "className": undefined,
-      "declineButtonText": undefined,
-      "marketingOptionText": undefined,
-      "message": "Text",
-      "necessaryOptionText": undefined,
-      "onConfirm": [Function],
-      "onDecline": [Function],
-      "onToggleMarketingCookies": [Function],
-      "onTogglePreferencesCookies": [Function],
-      "onToggleStatisticsCookies": [Function],
-      "policyLink": undefined,
-      "preferencesOptionText": undefined,
-      "privacyPolicyLinkText": undefined,
-      "showDeclineButton": undefined,
-      "showMarketingOption": undefined,
-      "showPreferencesOption": undefined,
-      "showStatisticsOption": undefined,
-      "statisticsOptionText": undefined,
-      "styles": undefined,
-    },
-    "ref": null,
-    "rendered": null,
-    "type": [Function],
-  },
-  Symbol(enzyme.__nodes__): Array [
-    Object {
-      "instance": null,
-      "key": undefined,
-      "nodeType": "function",
-      "props": Object {
-        "acceptButtonText": undefined,
-        "className": undefined,
-        "declineButtonText": undefined,
-        "marketingOptionText": undefined,
-        "message": "Text",
-        "necessaryOptionText": undefined,
-        "onConfirm": [Function],
-        "onDecline": [Function],
-        "onToggleMarketingCookies": [Function],
-        "onTogglePreferencesCookies": [Function],
-        "onToggleStatisticsCookies": [Function],
-        "policyLink": undefined,
-        "preferencesOptionText": undefined,
-        "privacyPolicyLinkText": undefined,
-        "showDeclineButton": undefined,
-        "showMarketingOption": undefined,
-        "showPreferencesOption": undefined,
-        "showStatisticsOption": undefined,
-        "statisticsOptionText": undefined,
-        "styles": undefined,
-      },
-      "ref": null,
-      "rendered": null,
-      "type": [Function],
-    },
-  ],
-  Symbol(enzyme.__options__): Object {
-    "adapter": ReactSixteenAdapter {
-      "options": Object {
-        "enableComponentDidUpdateOnSetState": true,
-        "lifecycles": Object {
-          "componentDidUpdate": Object {
-            "onSetState": true,
-          },
-          "getDerivedStateFromProps": true,
-          "getSnapshotBeforeUpdate": true,
-          "setState": Object {
-            "skipsComponentDidUpdateOnNullish": true,
-          },
-        },
-      },
-    },
-  },
-}
+<_default
+  message="Text"
+  onConfirm={[Function]}
+  onDecline={[Function]}
+  onToggleMarketingCookies={[Function]}
+  onTogglePreferencesCookies={[Function]}
+  onToggleStatisticsCookies={[Function]}
+/>
 `;
