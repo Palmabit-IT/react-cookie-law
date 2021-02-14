@@ -1,6 +1,6 @@
 {
   "name": "@palmabit/react-cookie-law",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "React Cookie banner GDPR compliance",
   "author": "Alessandro Sarzina <a.sarzina@palmabit.com>",
   "license": "MIT",
@@ -62,8 +62,8 @@
     "webpack-cli": "^4.3.1"
   },
   "peerDependencies": {
-    "react": "^16.8.0 || ^17.0.0",
-    "react-dom": "^16.8.0 || ^17.0.0"
+    "react": ">=^16.8.0 || >=~17.0.0",
+    "react-dom": ">=^16.8.0 || >=~17.0.0"
   },
   "resolutions": {
     "babel-core": "7.0.0-bridge.0"
