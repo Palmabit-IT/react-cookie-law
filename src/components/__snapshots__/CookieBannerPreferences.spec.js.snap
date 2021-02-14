@@ -1,0 +1,178 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CookieBannerPreferences component should be rendered 1`] = `
+<div
+  className="react-cookie-law-select-pane"
+  style={
+    Object {
+      "display": "table-cell",
+      "padding": "3px 0px 10px 0px",
+    }
+  }
+>
+  <CookieOption
+    checked={true}
+    disabled={true}
+    id="check-required-cookies"
+    styles={
+      Object {
+        "checkboxStyle": Object {
+          "cursor": "pointer",
+          "height": "14px",
+          "left": "0",
+          "position": "absolute",
+          "top": "4px",
+          "width": "14px",
+          "zIndex": "2",
+        },
+        "optionLabelStyle": Object {
+          "color": "#c6c6c6",
+          "cursor": "default",
+          "display": "inline-block",
+          "fontSize": "12pt",
+          "height": "auto",
+          "left": "0",
+          "minHeight": "14px",
+          "padding": "1px 0 0 20px",
+          "position": "relative",
+          "top": "0",
+          "verticalAlign": "top",
+          "width": "auto",
+          "zIndex": "1",
+        },
+        "optionWrapperStyle": Object {
+          "display": "inline-block",
+          "float": "left",
+          "marginLeft": "7px",
+          "marginRight": "7px",
+          "position": "relative",
+        },
+      }
+    }
+    text="Necessary"
+  />
+  <CookieOption
+    defaultChecked={false}
+    id="check-preferences-cookies"
+    onChange={[Function]}
+    styles={
+      Object {
+        "checkboxStyle": Object {
+          "cursor": "pointer",
+          "height": "14px",
+          "left": "0",
+          "position": "absolute",
+          "top": "4px",
+          "width": "14px",
+          "zIndex": "2",
+        },
+        "optionLabelStyle": Object {
+          "color": "#c6c6c6",
+          "cursor": "default",
+          "display": "inline-block",
+          "fontSize": "12pt",
+          "height": "auto",
+          "left": "0",
+          "minHeight": "14px",
+          "padding": "1px 0 0 20px",
+          "position": "relative",
+          "top": "0",
+          "verticalAlign": "top",
+          "width": "auto",
+          "zIndex": "1",
+        },
+        "optionWrapperStyle": Object {
+          "display": "inline-block",
+          "float": "left",
+          "marginLeft": "7px",
+          "marginRight": "7px",
+          "position": "relative",
+        },
+      }
+    }
+    text="Preferences"
+  />
+  <CookieOption
+    defaultChecked={false}
+    id="check-statistics-cookies"
+    onChange={[Function]}
+    styles={
+      Object {
+        "checkboxStyle": Object {
+          "cursor": "pointer",
+          "height": "14px",
+          "left": "0",
+          "position": "absolute",
+          "top": "4px",
+          "width": "14px",
+          "zIndex": "2",
+        },
+        "optionLabelStyle": Object {
+          "color": "#c6c6c6",
+          "cursor": "default",
+          "display": "inline-block",
+          "fontSize": "12pt",
+          "height": "auto",
+          "left": "0",
+          "minHeight": "14px",
+          "padding": "1px 0 0 20px",
+          "position": "relative",
+          "top": "0",
+          "verticalAlign": "top",
+          "width": "auto",
+          "zIndex": "1",
+        },
+        "optionWrapperStyle": Object {
+          "display": "inline-block",
+          "float": "left",
+          "marginLeft": "7px",
+          "marginRight": "7px",
+          "position": "relative",
+        },
+      }
+    }
+    text="Statistics"
+  />
+  <CookieOption
+    defaultChecked={false}
+    id="check-marketing-cookies"
+    onChange={[Function]}
+    styles={
+      Object {
+        "checkboxStyle": Object {
+          "cursor": "pointer",
+          "height": "14px",
+          "left": "0",
+          "position": "absolute",
+          "top": "4px",
+          "width": "14px",
+          "zIndex": "2",
+        },
+        "optionLabelStyle": Object {
+          "color": "#c6c6c6",
+          "cursor": "default",
+          "display": "inline-block",
+          "fontSize": "12pt",
+          "height": "auto",
+          "left": "0",
+          "minHeight": "14px",
+          "padding": "1px 0 0 20px",
+          "position": "relative",
+          "top": "0",
+          "verticalAlign": "top",
+          "width": "auto",
+          "zIndex": "1",
+        },
+        "optionWrapperStyle": Object {
+          "display": "inline-block",
+          "float": "left",
+          "marginLeft": "7px",
+          "marginRight": "7px",
+          "position": "relative",
+        },
+      }
+    }
+    text="Marketing"
+  />
+</div>
+`;

@@ -41,179 +41,6 @@ exports[`CookieBannerContent component should be rendered 1`] = `
     >
       Custom text
     </div>
-    <div
-      className="react-cookie-law-select-pane"
-      style={
-        Object {
-          "display": "table-cell",
-          "padding": "3px 0px 10px 0px",
-        }
-      }
-    >
-      <CookieOption
-        checked={true}
-        disabled={true}
-        id="check-required-cookies"
-        styles={
-          Object {
-            "checkboxStyle": Object {
-              "cursor": "pointer",
-              "height": "14px",
-              "left": "0",
-              "position": "absolute",
-              "top": "4px",
-              "width": "14px",
-              "zIndex": "2",
-            },
-            "optionLabelStyle": Object {
-              "color": "#c6c6c6",
-              "cursor": "default",
-              "display": "inline-block",
-              "fontSize": "12pt",
-              "height": "auto",
-              "left": "0",
-              "minHeight": "14px",
-              "padding": "1px 0 0 20px",
-              "position": "relative",
-              "top": "0",
-              "verticalAlign": "top",
-              "width": "auto",
-              "zIndex": "1",
-            },
-            "optionWrapperStyle": Object {
-              "display": "inline-block",
-              "float": "left",
-              "marginLeft": "7px",
-              "marginRight": "7px",
-              "position": "relative",
-            },
-          }
-        }
-        text="Necessary"
-      />
-      <CookieOption
-        checked={true}
-        id="check-preferences-cookies"
-        onChange={[Function]}
-        styles={
-          Object {
-            "checkboxStyle": Object {
-              "cursor": "pointer",
-              "height": "14px",
-              "left": "0",
-              "position": "absolute",
-              "top": "4px",
-              "width": "14px",
-              "zIndex": "2",
-            },
-            "optionLabelStyle": Object {
-              "color": "#c6c6c6",
-              "cursor": "default",
-              "display": "inline-block",
-              "fontSize": "12pt",
-              "height": "auto",
-              "left": "0",
-              "minHeight": "14px",
-              "padding": "1px 0 0 20px",
-              "position": "relative",
-              "top": "0",
-              "verticalAlign": "top",
-              "width": "auto",
-              "zIndex": "1",
-            },
-            "optionWrapperStyle": Object {
-              "display": "inline-block",
-              "float": "left",
-              "marginLeft": "7px",
-              "marginRight": "7px",
-              "position": "relative",
-            },
-          }
-        }
-        text="Preferences"
-      />
-      <CookieOption
-        checked={true}
-        id="check-statistics-cookies"
-        onChange={[Function]}
-        styles={
-          Object {
-            "checkboxStyle": Object {
-              "cursor": "pointer",
-              "height": "14px",
-              "left": "0",
-              "position": "absolute",
-              "top": "4px",
-              "width": "14px",
-              "zIndex": "2",
-            },
-            "optionLabelStyle": Object {
-              "color": "#c6c6c6",
-              "cursor": "default",
-              "display": "inline-block",
-              "fontSize": "12pt",
-              "height": "auto",
-              "left": "0",
-              "minHeight": "14px",
-              "padding": "1px 0 0 20px",
-              "position": "relative",
-              "top": "0",
-              "verticalAlign": "top",
-              "width": "auto",
-              "zIndex": "1",
-            },
-            "optionWrapperStyle": Object {
-              "display": "inline-block",
-              "float": "left",
-              "marginLeft": "7px",
-              "marginRight": "7px",
-              "position": "relative",
-            },
-          }
-        }
-        text="Statistics"
-      />
-      <CookieOption
-        id="check-marketing-cookies"
-        onChange={[Function]}
-        styles={
-          Object {
-            "checkboxStyle": Object {
-              "cursor": "pointer",
-              "height": "14px",
-              "left": "0",
-              "position": "absolute",
-              "top": "4px",
-              "width": "14px",
-              "zIndex": "2",
-            },
-            "optionLabelStyle": Object {
-              "color": "#c6c6c6",
-              "cursor": "default",
-              "display": "inline-block",
-              "fontSize": "12pt",
-              "height": "auto",
-              "left": "0",
-              "minHeight": "14px",
-              "padding": "1px 0 0 20px",
-              "position": "relative",
-              "top": "0",
-              "verticalAlign": "top",
-              "width": "auto",
-              "zIndex": "1",
-            },
-            "optionWrapperStyle": Object {
-              "display": "inline-block",
-              "float": "left",
-              "marginLeft": "7px",
-              "marginRight": "7px",
-              "position": "relative",
-            },
-          }
-        }
-        text="Marketing"
-      />
-    </div>
     <a
       className="react-cookie-law-policy"
       href="/#"
@@ -237,6 +64,32 @@ exports[`CookieBannerContent component should be rendered 1`] = `
       }
     >
       <button
+        className="react-cookie-law-manage-btn"
+        onClick={[Function]}
+        style={
+          Object {
+            "backgroundColor": "#000000",
+            "color": "#ffffff",
+            "cursor": "pointer",
+            "display": "inline-block",
+            "fontSize": "10pt",
+            "fontWeight": "400",
+            "marginLeft": "5px",
+            "marginRight": "5px",
+            "minWidth": "80px",
+            "padding": "3px",
+            "textAlign": "center",
+            "textDecoration": "none",
+            "whiteSpace": "nowrap",
+          }
+        }
+        type="button"
+      >
+        <span>
+          Mange my cookies
+        </span>
+      </button>
+      <button
         className="react-cookie-law-accept-btn"
         onClick={[Function]}
         style={
@@ -259,7 +112,7 @@ exports[`CookieBannerContent component should be rendered 1`] = `
         type="button"
       >
         <span>
-          Accept
+          Accept all
         </span>
       </button>
     </div>
