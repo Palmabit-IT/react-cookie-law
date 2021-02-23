@@ -17,7 +17,7 @@ const CookieBannerProvider = ({ children }) => {
     MARKETING_COOKIE,
   ]);
 
-  const [preferences, setPreferences] = useState({
+  const [consents, setConsents] = useState({
     accepted: cookies[CONSENT_GIVEN] || false,
     preferences: cookies[PREFERENCES_COOKIE] || false,
     statistics: cookies[STATISTICS_COOKIE] || false,
@@ -30,14 +30,14 @@ const CookieBannerProvider = ({ children }) => {
     } else {
       removeCookie(cookie);
     }
-  }
+  };
 
-  const onSavePreferences = ({ preferences = false, statistics = false, marketing = false }) => {
+  const onSaveConsents = ({ preferences = false, statistics = false, marketing = false }) => {
     toggleCookie(PREFERENCES_COOKIE, preferences);
     toggleCookie(STATISTICS_COOKIE, statistics);
     toggleCookie(MARKETING_COOKIE, marketing);
 
-    setPreferences({
+    setConsents({
       accepted: true,
       preferences: !!preferences,
       statistics: !!statistics,
@@ -52,7 +52,7 @@ const CookieBannerProvider = ({ children }) => {
     setCookie(STATISTICS_COOKIE, true, { expires });
     setCookie(MARKETING_COOKIE, true, { expires });
 
-    setPreferences({
+    setConsents({
       accepted: true,
       preferences: true,
       statistics: true,
@@ -61,8 +61,8 @@ const CookieBannerProvider = ({ children }) => {
   };
 
   const context = {
-    preferences,
-    onSavePreferences,
+    consents,
+    onSaveConsents,
     onAcceptAll,
   };
 

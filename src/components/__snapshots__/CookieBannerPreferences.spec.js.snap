@@ -52,7 +52,7 @@ exports[`CookieBannerPreferences component should be rendered 1`] = `
     text="Necessary"
   />
   <CookieOption
-    defaultChecked={false}
+    checked={false}
     id="check-preferences-cookies"
     onChange={[Function]}
     styles={
@@ -93,7 +93,7 @@ exports[`CookieBannerPreferences component should be rendered 1`] = `
     text="Preferences"
   />
   <CookieOption
-    defaultChecked={false}
+    checked={false}
     id="check-statistics-cookies"
     onChange={[Function]}
     styles={
@@ -134,7 +134,7 @@ exports[`CookieBannerPreferences component should be rendered 1`] = `
     text="Statistics"
   />
   <CookieOption
-    defaultChecked={false}
+    checked={false}
     id="check-marketing-cookies"
     onChange={[Function]}
     styles={

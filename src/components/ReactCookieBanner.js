@@ -5,12 +5,17 @@ import { useCookieBanner } from '../provides/cookieProviders';
 import { isServer } from '../helpers';
 
 const ReactCookieBanner = (props) => {
-  const [preferencesCookie, setPreferencesCookie] = useState(false);
-  const [statisticsCookie, setStatisticsCookie] = useState(false);
-  const [marketingCookie, setMarketingCookie] = useState(false);
-  const { onSavePreferences, onAcceptAll } = useCookieBanner();
+  const {
+    preferencesDefaultChecked,
+    statisticsDefaultChecked,
+    marketingDefaultChecked,
+    dismissOnScroll,
+  } = props;
 
-  const { dismissOnScroll } = props;
+  const [preferencesCookie, setPreferencesCookie] = useState(preferencesDefaultChecked);
+  const [statisticsCookie, setStatisticsCookie] = useState(statisticsDefaultChecked);
+  const [marketingCookie, setMarketingCookie] = useState(marketingDefaultChecked);
+  const [, onSaveConsents, onAcceptAll] = useCookieBanner();
 
   useEffect(() => {
     if (isServer() || dismissOnScroll !== true) {
@@ -18,49 +23,56 @@ const ReactCookieBanner = (props) => {
     }
 
     if (window.addEventListener) {
-      window.addEventListener('scroll', onScroll);
+      window.addEventListener('scroll', onAcceptAll);
     } else if (window.attachEvent) {
-      window.attachEvent('onscroll', onScroll); // < IE9
+      window.attachEvent('onscroll', onAcceptAll); // < IE9
     }
 
+    // eslint-disable-next-line consistent-return
     return () => {
       if (window.removeEventListener) {
-        window.removeEventListener('scroll', onScroll);
+        window.removeEventListener('scroll', onAcceptAll);
       } else if (window.detachEvent) {
-        window.detachEvent('onscroll', onScroll); // < IE9
+        window.detachEvent('onscroll', onAcceptAll); // < IE9
       }
-    }
+    };
   }, []);
-
-  const onScroll = () => {
-    onAcceptAll();
-  }
 
   const onTogglePreferencesCookies = (e) => {
     setPreferencesCookie(e.target.checked);
-  }
+  };
 
   const onToggleStatisticsCookies = (e) => {
     setStatisticsCookie(e.target.checked);
-  }
+  };
 
   const onToggleMarketingCookies = (e) => {
     setMarketingCookie(e.target.checked);
-  }
+  };
+
+  const onSave = () => {
+    onSaveConsents({
+      preferences: preferencesCookie,
+      statistics: statisticsCookie,
+      marketing: marketingCookie,
+    });
+  };
 
   const contentProps = {
     onTogglePreferencesCookies,
     onToggleStatisticsCookies,
     onToggleMarketingCookies,
-    onSave: () => onSavePreferences({ preferences: preferencesCookie, statistics: statisticsCookie, marketing: marketingCookie }),
+    onSave,
     onAcceptAll,
   };
 
-  return <CookieBannerContent
-    {...props}
-    {...contentProps}
-  />;
-}
+  return (
+    <CookieBannerContent
+      {...props}
+      {...contentProps}
+    />
+  );
+};
 
 ReactCookieBanner.protoTypes = {
   className: PropTypes.string,
@@ -83,13 +95,6 @@ ReactCookieBanner.protoTypes = {
   preferencesDefaultChecked: PropTypes.bool,
   statisticsDefaultChecked: PropTypes.bool,
   marketingDefaultChecked: PropTypes.bool,
-  onAccept: PropTypes.func,
-  onAcceptPreferences: PropTypes.func,
-  onAcceptStatistics: PropTypes.func,
-  onAcceptMarketing: PropTypes.func,
-  onDeclinePreferences: PropTypes.func,
-  onDeclineStatistics: PropTypes.func,
-  onDeclineMarketing: PropTypes.func,
 };
 
 export default ReactCookieBanner;

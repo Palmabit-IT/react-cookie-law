@@ -42,9 +42,9 @@ describe('CookieBannerPreferences component', () => {
     };
 
     expect(component.contains(<CookieOption id="check-required-cookies" text="Necessary" disabled checked styles={cookieOptionStyle} />)).toBeTruthy();
-    expect(component.contains(<CookieOption id="check-preferences-cookies" text="Preferences" defaultChecked={false} onChange={Function} styles={cookieOptionStyle} />)).toBeTruthy();
-    expect(component.contains(<CookieOption id="check-statistics-cookies" text="Statistics" defaultChecked={false} onChange={Function} styles={cookieOptionStyle} />)).toBeTruthy();
-    expect(component.contains(<CookieOption id="check-marketing-cookies" text="Marketing" defaultChecked={false} onChange={Function} styles={cookieOptionStyle} />)).toBeTruthy();
+    expect(component.contains(<CookieOption id="check-preferences-cookies" text="Preferences" checked={false} onChange={Function} styles={cookieOptionStyle} />)).toBeTruthy();
+    expect(component.contains(<CookieOption id="check-statistics-cookies" text="Statistics" checked={false} onChange={Function} styles={cookieOptionStyle} />)).toBeTruthy();
+    expect(component.contains(<CookieOption id="check-marketing-cookies" text="Marketing" checked={false} onChange={Function} styles={cookieOptionStyle} />)).toBeTruthy();
   });
 
   test('should hide preferences checkbox', () => {

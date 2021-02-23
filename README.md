@@ -58,6 +58,9 @@ React.renderComponent(
 | **showPreferencesOption** | bool | true | *optional*. Show or hide the *preferences* checkbox |
 | **showStatisticsOption** | bool | true | *optional*. Show or hide the *statistics* checkbox |
 | **showMarketingOption** | bool | true | *optional*. Show or hide the *marketing* checkbox |
+| **preferencesDefaultChecked** | bool | true | *optional*. Check the *preferences* checkbox as default |
+| **statisticsDefaultChecked** | bool | true | *optional*. Check the *statistics* checkbox as default |
+| **marketingDefaultChecked** | bool | true | *optional*. Check the *marketing* checkbox as default |
 | **onAccept** | function | Function | *optional*. Callback called when the consent is given |
 | **onAcceptPreferences** | function | Function | *optional*. Callback called if *preferences* cookies is accepted |
 | **onAcceptStatistics** | function | Function | *optional*. Callback called if *statistics* cookies is accepted |

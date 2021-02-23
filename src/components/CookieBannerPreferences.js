@@ -45,7 +45,7 @@ export default (props = {}) => {
             id="check-preferences-cookies"
             text={preferencesOptionText}
             styles={cookieOptionStyle}
-            defaultChecked={preferencesDefaultChecked}
+            checked={preferencesDefaultChecked}
             onChange={onTogglePreferencesCookies}
           />
         )
@@ -57,7 +57,7 @@ export default (props = {}) => {
             id="check-statistics-cookies"
             text={statisticsOptionText}
             styles={cookieOptionStyle}
-            defaultChecked={statisticsDefaultChecked}
+            checked={statisticsDefaultChecked}
             onChange={onToggleStatisticsCookies}
           />
         )
@@ -69,7 +69,7 @@ export default (props = {}) => {
             id="check-marketing-cookies"
             text={marketingOptionText}
             styles={cookieOptionStyle}
-            defaultChecked={marketingDefaultChecked}
+            checked={marketingDefaultChecked}
             onChange={onToggleMarketingCookies}
           />
         )

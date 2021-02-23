@@ -13,16 +13,23 @@ class CookieBanner extends React.Component {
   constructor(props) {
     super(props);
 
+    const {
+      preferencesDefaultChecked = false,
+      statisticsDefaultChecked = false,
+      marketingDefaultChecked = false,
+    } = this.props;
+
     this.state = {
-      preferencesCookies: true,
-      statisticsCookies: true,
-      marketingCookies: false,
+      preferencesCookies: preferencesDefaultChecked,
+      statisticsCookies: statisticsDefaultChecked,
+      marketingCookies: marketingDefaultChecked,
     };
 
     this.onScroll = this.onScroll.bind(this);
     this.onTogglePreferencesCookies = this.onTogglePreferencesCookies.bind(this);
     this.onToggleStatisticsCookies = this.onToggleStatisticsCookies.bind(this);
     this.onToggleMarketingCookies = this.onToggleMarketingCookies.bind(this);
+    this.onAcceptAll = this.onAcceptAll.bind(this);
     this.confirm = this.confirm.bind(this);
     this.decline = this.decline.bind(this);
     this.consetsCallback = this.consetsCallback.bind(this);
@@ -60,19 +67,35 @@ class CookieBanner extends React.Component {
     this.confirm();
   }
 
-  onTogglePreferencesCookies() {
-    const { preferencesCookies } = this.state;
-    this.setState({ preferencesCookies: !preferencesCookies });
+  onTogglePreferencesCookies(value) {
+    this.setState({ preferencesCookies: value });
   }
 
-  onToggleStatisticsCookies() {
-    const { statisticsCookies } = this.state;
-    this.setState({ statisticsCookies: !statisticsCookies });
+  onToggleStatisticsCookies(value) {
+    this.setState({ statisticsCookies: value });
   }
 
-  onToggleMarketingCookies() {
-    const { marketingCookies } = this.state;
-    this.setState({ marketingCookies: !marketingCookies });
+  onToggleMarketingCookies(value) {
+    this.setState({ marketingCookies: value });
+  }
+
+  onAcceptAll() {
+    const {
+      onAcceptPreferences = Function,
+      onAcceptStatistics = Function,
+      onAcceptMarketing = Function,
+    } = this.props;
+
+    this.cookies.set(CONSENT_GIVEN);
+    this.cookies.set(PREFERENCES_COOKIE);
+    this.cookies.set(STATISTICS_COOKIE);
+    this.cookies.set(MARKETING_COOKIE);
+
+    onAcceptPreferences();
+    onAcceptStatistics();
+    onAcceptMarketing();
+
+    this.forceUpdate();
   }
 
   confirm() {
@@ -173,6 +196,9 @@ class CookieBanner extends React.Component {
       showPreferencesOption,
       showStatisticsOption,
       showMarketingOption,
+      preferencesDefaultChecked,
+      statisticsDefaultChecked,
+      marketingDefaultChecked,
     } = this.props;
 
     if (this.cookies.get(CONSENT_GIVEN)) {
@@ -196,11 +222,15 @@ class CookieBanner extends React.Component {
       showPreferencesOption,
       showStatisticsOption,
       showMarketingOption,
+      preferencesDefaultChecked,
+      statisticsDefaultChecked,
+      marketingDefaultChecked,
       onTogglePreferencesCookies: this.onTogglePreferencesCookies,
       onToggleStatisticsCookies: this.onToggleStatisticsCookies,
       onToggleMarketingCookies: this.onToggleMarketingCookies,
       onDecline: this.decline,
       onConfirm: this.confirm,
+      onAcceptAll: this.onAcceptAll,
     };
 
     return (<CookieBannerContent {...contentProps} />);
@@ -225,6 +255,9 @@ CookieBanner.protoTypes = {
   showPreferencesOption: PropTypes.bool,
   showStatisticsOption: PropTypes.bool,
   showMarketingOption: PropTypes.bool,
+  preferencesDefaultChecked: PropTypes.bool,
+  statisticsDefaultChecked: PropTypes.bool,
+  marketingDefaultChecked: PropTypes.bool,
   onAccept: PropTypes.func,
   onAcceptPreferences: PropTypes.func,
   onAcceptStatistics: PropTypes.func,

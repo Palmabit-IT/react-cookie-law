@@ -17,9 +17,10 @@ module.exports = {
       1,
       {
         extensions: ['.js', '.jsx'],
-      }
+      },
     ],
     'import/prefer-default-export': 'off',
     'react/prop-types': [0],
-  }
+    'react/jsx-props-no-spreading': 'off',
+  },
 };

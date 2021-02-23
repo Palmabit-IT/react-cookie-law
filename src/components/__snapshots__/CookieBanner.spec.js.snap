@@ -1,8 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`CookieBanner component should be rendered 1`] = `
-<_default
+<CookieBannerContent
   message="Text"
+  onAcceptAll={[Function]}
   onConfirm={[Function]}
   onDecline={[Function]}
   onToggleMarketingCookies={[Function]}

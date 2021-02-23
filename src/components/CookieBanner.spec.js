@@ -30,13 +30,12 @@ describe('CookieBanner component', () => {
     expect(component.find(CookieBannerContent)).toHaveLength(1);
   });
 
-
   test('should be rendered with custom class', () => {
     const component = mount(
-      <CookieBanner className={'testclass'} message="Custom text" />,
+      <CookieBanner className="testclass" message="Custom text" />,
     );
 
-    expect(component.hasClass('testclass')).toBe(true)
+    expect(component.hasClass('testclass')).toBe(true);
   });
 
   test('shouldn\'t show banner if cookies are already accepted', () => {
@@ -57,7 +56,6 @@ describe('CookieBanner component', () => {
     expect(component.html().length).toBeGreaterThan(0);
     expect(component.contains(CookieBannerContent)).toBeTruthy();
     component.find(CookieBannerContent).prop('onConfirm')();
-    // expect(component.html()).toBeNull();
   });
 
   test('should close banner if decline button is pressed', () => {
@@ -118,6 +116,19 @@ describe('CookieBanner component', () => {
     expect(document.cookie.indexOf('rcl_consent_given=true')).toBeGreaterThanOrEqual(0);
   });
 
+  test('should accept all cookies', () => {
+    const component = mount(
+      <CookieBanner message="Custom text" />,
+    );
+
+    component.find(CookieBannerContent).prop('onAcceptAll')();
+
+    expect(document.cookie.indexOf('rcl_consent_given=true')).toBeGreaterThanOrEqual(0);
+    expect(document.cookie.indexOf('rcl_preferences_consent=true')).toBeGreaterThanOrEqual(0);
+    expect(document.cookie.indexOf('rcl_statistics_consent=true')).toBeGreaterThanOrEqual(0);
+    expect(document.cookie.indexOf('rcl_marketing_consent=true')).toBeGreaterThanOrEqual(0);
+  });
+
   test('should give default consents at confirm', () => {
     const component = mount(
       <CookieBanner message="Custom text" />,
@@ -126,8 +137,8 @@ describe('CookieBanner component', () => {
     component.find(CookieBannerContent).prop('onConfirm')();
 
     expect(document.cookie.indexOf('rcl_consent_given=true')).toBeGreaterThanOrEqual(0);
-    expect(document.cookie.indexOf('rcl_preferences_consent=true')).toBeGreaterThanOrEqual(0);
-    expect(document.cookie.indexOf('rcl_statistics_consent=true')).toBeGreaterThanOrEqual(0);
+    expect(document.cookie.indexOf('rcl_preferences_consent=true')).toBeLessThan(0);
+    expect(document.cookie.indexOf('rcl_statistics_consent=true')).toBeLessThan(0);
     expect(document.cookie.indexOf('rcl_marketing_consent=true')).toBeLessThan(0);
   });
 
@@ -136,11 +147,11 @@ describe('CookieBanner component', () => {
       <CookieBanner message="Custom text" />,
     );
 
-    component.find(CookieBannerContent).prop('onTogglePreferencesCookies')();
+    component.find(CookieBannerContent).prop('onTogglePreferencesCookies')(true);
     component.find(CookieBannerContent).prop('onConfirm')();
 
     expect(document.cookie.indexOf('rcl_consent_given=true')).toBeGreaterThanOrEqual(0);
-    expect(document.cookie.indexOf('rcl_preferences_consent=true')).toBeLessThan(0);
+    expect(document.cookie.indexOf('rcl_preferences_consent=true')).toBeGreaterThanOrEqual(0);
   });
 
   test('should give consent for preferences cookie at confirm', () => {
@@ -148,12 +159,12 @@ describe('CookieBanner component', () => {
       <CookieBanner message="Custom text" />,
     );
 
-    component.find(CookieBannerContent).prop('onTogglePreferencesCookies')();
-    component.find(CookieBannerContent).prop('onTogglePreferencesCookies')();
+    component.find(CookieBannerContent).prop('onTogglePreferencesCookies')(true);
+    component.find(CookieBannerContent).prop('onTogglePreferencesCookies')(false);
     component.find(CookieBannerContent).prop('onConfirm')();
 
     expect(document.cookie.indexOf('rcl_consent_given=true')).toBeGreaterThanOrEqual(0);
-    expect(document.cookie.indexOf('rcl_preferences_consent=true')).toBeGreaterThanOrEqual(0);
+    expect(document.cookie.indexOf('rcl_preferences_consent=true')).toBeLessThan(0);
   });
 
   test('should remove consent for statistics cookie at confirm', () => {
@@ -161,11 +172,11 @@ describe('CookieBanner component', () => {
       <CookieBanner message="Custom text" />,
     );
 
-    component.find(CookieBannerContent).prop('onToggleStatisticsCookies')();
+    component.find(CookieBannerContent).prop('onToggleStatisticsCookies')(true);
     component.find(CookieBannerContent).prop('onConfirm')();
 
     expect(document.cookie.indexOf('rcl_consent_given=true')).toBeGreaterThanOrEqual(0);
-    expect(document.cookie.indexOf('rcl_statistics_consent=true')).toBeLessThan(0);
+    expect(document.cookie.indexOf('rcl_statistics_consent=true')).toBeGreaterThanOrEqual(0);
   });
 
   test('should give consent for statistics cookie at confirm', () => {
@@ -173,12 +184,12 @@ describe('CookieBanner component', () => {
       <CookieBanner message="Custom text" />,
     );
 
-    component.find(CookieBannerContent).prop('onToggleStatisticsCookies')();
-    component.find(CookieBannerContent).prop('onToggleStatisticsCookies')();
+    component.find(CookieBannerContent).prop('onToggleStatisticsCookies')(true);
+    component.find(CookieBannerContent).prop('onToggleStatisticsCookies')(false);
     component.find(CookieBannerContent).prop('onConfirm')();
 
     expect(document.cookie.indexOf('rcl_consent_given=true')).toBeGreaterThanOrEqual(0);
-    expect(document.cookie.indexOf('rcl_statistics_consent=true')).toBeGreaterThanOrEqual(0);
+    expect(document.cookie.indexOf('rcl_statistics_consent=true')).toBeLessThan(0);
   });
 
   test('should give consent for marketing cookie at confirm', () => {
@@ -186,7 +197,7 @@ describe('CookieBanner component', () => {
       <CookieBanner message="Custom text" />,
     );
 
-    component.find(CookieBannerContent).prop('onToggleMarketingCookies')();
+    component.find(CookieBannerContent).prop('onToggleMarketingCookies')(true);
     component.find(CookieBannerContent).prop('onConfirm')();
 
     expect(document.cookie.indexOf('rcl_consent_given=true')).toBeGreaterThanOrEqual(0);
@@ -198,11 +209,14 @@ describe('CookieBanner component', () => {
       <CookieBanner message="Custom text" />,
     );
 
-    component.find(CookieBannerContent).prop('onTogglePreferencesCookies')();
-    component.find(CookieBannerContent).prop('onToggleStatisticsCookies')();
-    component.find(CookieBannerContent).prop('onToggleMarketingCookies')();
+    component.find(CookieBannerContent).prop('onTogglePreferencesCookies')(true);
+    component.find(CookieBannerContent).prop('onToggleStatisticsCookies')(true);
+    component.find(CookieBannerContent).prop('onToggleMarketingCookies')(true);
     component.find(CookieBannerContent).prop('onDecline')();
 
     expect(document.cookie).toBe('rcl_consent_given=true');
+    expect(document.cookie.indexOf('rcl_preferences_consent=true')).toBeLessThan(0);
+    expect(document.cookie.indexOf('rcl_statistics_consent=true')).toBeLessThan(0);
+    expect(document.cookie.indexOf('rcl_marketing_consent=true')).toBeLessThan(0);
   });
 });
