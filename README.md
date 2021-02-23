@@ -53,6 +53,8 @@ React.renderComponent(
 | **marketingOptionText** | string | "Marketing" | *optional*. Text for the *marketing* cookies checkbox |
 | **acceptButtonText** | string | "Accept" | *optional*. Text for the *accept* button |
 | **declineButtonText** | string | "Decline" | *optional*. Text for the *decline* button |
+| **managePreferencesButtonText** | string | "Decline" | *optional*. Text for the *manage preferences* button |
+| **savePreferencesButtonText** | string | "Decline" | *optional*. Text for the save and close* button |
 | **showDeclineButton** | bool | false | *optional*. Show or hide the *decline* button |
 | **dismissOnScroll** | bool | false | *optional*. Enable or disable the dismissing on scroll of the banner |
 | **showPreferencesOption** | bool | true | *optional*. Show or hide the *preferences* checkbox |
