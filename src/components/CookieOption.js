@@ -10,7 +10,7 @@ class CookieOption extends React.Component {
   }
 
   handleOnChange() {
-    const { onChange = Function } = this.props;
+    const { onChange = () => {} } = this.props;
     const { checked } = this.state;
     const newValue = !checked;
 

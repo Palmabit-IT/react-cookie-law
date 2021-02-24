@@ -17,6 +17,7 @@ class CookieBanner extends React.Component {
       preferencesDefaultChecked = false,
       statisticsDefaultChecked = false,
       marketingDefaultChecked = false,
+      wholeDomain = false,
     } = this.props;
 
     this.state = {
@@ -34,7 +35,7 @@ class CookieBanner extends React.Component {
     this.decline = this.decline.bind(this);
     this.consetsCallback = this.consetsCallback.bind(this);
 
-    this.cookies = new Cookies(this.props.wholeDomain);
+    this.cookies = new Cookies(wholeDomain);
   }
 
   componentDidMount() {
@@ -81,9 +82,9 @@ class CookieBanner extends React.Component {
 
   onAcceptAll() {
     const {
-      onAcceptPreferences = Function,
-      onAcceptStatistics = Function,
-      onAcceptMarketing = Function,
+      onAcceptPreferences = () => {},
+      onAcceptStatistics = () => {},
+      onAcceptMarketing = () => {},
     } = this.props;
 
     this.cookies.set(CONSENT_GIVEN);
@@ -126,9 +127,9 @@ class CookieBanner extends React.Component {
 
   decline() {
     const {
-      onDeclinePreferences = Function,
-      onDeclineStatistics = Function,
-      onDeclineMarketing = Function,
+      onDeclinePreferences = () => {},
+      onDeclineStatistics = () => {},
+      onDeclineMarketing = () => {},
     } = this.props;
 
     this.cookies.set(CONSENT_GIVEN);
@@ -145,13 +146,13 @@ class CookieBanner extends React.Component {
 
   consetsCallback() {
     const {
-      onAccept = Function,
-      onAcceptPreferences = Function,
-      onAcceptStatistics = Function,
-      onAcceptMarketing = Function,
-      onDeclinePreferences = Function,
-      onDeclineStatistics = Function,
-      onDeclineMarketing = Function,
+      onAccept = () => {},
+      onAcceptPreferences = () => {},
+      onAcceptStatistics = () => {},
+      onAcceptMarketing = () => {},
+      onDeclinePreferences = () => {},
+      onDeclineStatistics = () => {},
+      onDeclineMarketing = () => {},
     } = this.props;
 
     const hasPreferencesCookie = this.cookies.get(PREFERENCES_COOKIE);

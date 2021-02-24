@@ -19,8 +19,8 @@ class CookieBannerContent extends React.Component {
       acceptButtonText = 'Accept all',
       managePreferencesButtonText = 'Mange my cookies',
       savePreferencesButtonText = 'Save and close',
-      onConfirm = Function,
-      onAcceptAll = Function,
+      onConfirm = () => {},
+      onAcceptAll = () => {},
     } = this.props;
 
     const { showPreferences } = this.state;

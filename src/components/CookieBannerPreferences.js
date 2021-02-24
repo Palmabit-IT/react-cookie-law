@@ -15,9 +15,9 @@ export default (props = {}) => {
     preferencesDefaultChecked = false,
     statisticsDefaultChecked = false,
     marketingDefaultChecked = false,
-    onTogglePreferencesCookies = Function,
-    onToggleStatisticsCookies = Function,
-    onToggleMarketingCookies = Function,
+    onTogglePreferencesCookies = () => {},
+    onToggleStatisticsCookies = () => {},
+    onToggleMarketingCookies = () => {},
   } = props;
 
   const {

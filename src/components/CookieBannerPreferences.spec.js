@@ -26,9 +26,9 @@ describe('CookieBannerPreferences component', () => {
       preferencesDefaultChecked: false,
       statisticsDefaultChecked: false,
       marketingDefaultChecked: false,
-      onTogglePreferencesCookies: Function,
-      onToggleStatisticsCookies: Function,
-      onToggleMarketingCookies: Function,
+      onTogglePreferencesCookies: () => {},
+      onToggleStatisticsCookies: () => {},
+      onToggleMarketingCookies: () => {},
     };
 
     const component = mount(
@@ -42,9 +42,9 @@ describe('CookieBannerPreferences component', () => {
     };
 
     expect(component.contains(<CookieOption id="check-required-cookies" text="Necessary" disabled checked styles={cookieOptionStyle} />)).toBeTruthy();
-    expect(component.contains(<CookieOption id="check-preferences-cookies" text="Preferences" checked={false} onChange={Function} styles={cookieOptionStyle} />)).toBeTruthy();
-    expect(component.contains(<CookieOption id="check-statistics-cookies" text="Statistics" checked={false} onChange={Function} styles={cookieOptionStyle} />)).toBeTruthy();
-    expect(component.contains(<CookieOption id="check-marketing-cookies" text="Marketing" checked={false} onChange={Function} styles={cookieOptionStyle} />)).toBeTruthy();
+    expect(component.contains(<CookieOption id="check-preferences-cookies" text="Preferences" checked={false} onChange={props.onTogglePreferencesCookies} styles={cookieOptionStyle} />)).toBeTruthy();
+    expect(component.contains(<CookieOption id="check-statistics-cookies" text="Statistics" checked={false} onChange={props.onToggleStatisticsCookies} styles={cookieOptionStyle} />)).toBeTruthy();
+    expect(component.contains(<CookieOption id="check-marketing-cookies" text="Marketing" checked={false} onChange={props.onToggleMarketingCookies} styles={cookieOptionStyle} />)).toBeTruthy();
   });
 
   test('should hide preferences checkbox', () => {

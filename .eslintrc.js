@@ -1,4 +1,5 @@
 module.exports = {
+  root: true,
   extends: [
     'airbnb',
     'plugin:jest/recommended',
@@ -22,5 +23,6 @@ module.exports = {
     'import/prefer-default-export': 'off',
     'react/prop-types': [0],
     'react/jsx-props-no-spreading': 'off',
+    'linebreak-style': 0,
   },
 };
