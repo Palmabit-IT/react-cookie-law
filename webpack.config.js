@@ -15,7 +15,7 @@ module.exports = {
     ],
   },
   externals: {
-    react: 'React',
+    react: 'react',
   },
   plugins: [
     new CleanWebpackPlugin(['dist']),
