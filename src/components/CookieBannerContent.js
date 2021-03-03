@@ -23,7 +23,7 @@ class CookieBannerContent extends React.Component {
       onAcceptAll = () => {},
       showDeclineButton = false,
       declineButtonText = 'Decline all',
-      onDeclineAll = () => {},
+      onDecline = () => {},
     } = this.props;
 
     const { showPreferences } = this.state;
@@ -67,7 +67,7 @@ class CookieBannerContent extends React.Component {
             </button>
             { 
               showDeclineButton && (
-              <button type="button" className="react-cookie-law-accept-btn" style={buttonStyle} onClick={() => onDeclineAll()}>
+              <button type="button" className="react-cookie-law-accept-btn" style={buttonStyle} onClick={() => onDecline()}>
                 <span>{declineButtonText}</span>
               </button>
             )}
