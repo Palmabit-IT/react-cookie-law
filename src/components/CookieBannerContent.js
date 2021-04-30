@@ -17,7 +17,7 @@ class CookieBannerContent extends React.Component {
       policyLink = '/#',
       privacyPolicyLinkText = 'Privacy Policy',
       acceptButtonText = 'Accept all',
-      managePreferencesButtonText = 'Mange my cookies',
+      managePreferencesButtonText = 'Manage my cookies',
       savePreferencesButtonText = 'Save and close',
       onConfirm = () => {},
       onAcceptAll = () => {},

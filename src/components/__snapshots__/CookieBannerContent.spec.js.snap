@@ -86,7 +86,7 @@ exports[`CookieBannerContent component should be rendered 1`] = `
         type="button"
       >
         <span>
-          Mange my cookies
+          Manage my cookies
         </span>
       </button>
       <button
