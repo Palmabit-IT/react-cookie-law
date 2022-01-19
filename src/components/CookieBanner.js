@@ -1,15 +1,27 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Cookies from '../Cookies';
-import CookieBannerContent from './CookieBannerContent';
-import { isServer } from '../helpers';
+import React from "react";
+import PropTypes from "prop-types";
+import slugify from "slugify";
+import Cookies from "../Cookies";
+import CookieBannerContent from "./CookieBannerContent";
+import { isServer, isUsingCorypha } from "../helpers";
+import {
+  fetchCoryphaPreferences,
+  saveCoryphaPreferences,
+  checkVersionCoryphaPreferences,
+} from "../coryphaAPI";
+import { v4 as uuidv4 } from "uuid";
 
-const CONSENT_GIVEN = 'rcl_consent_given';
-const PREFERENCES_COOKIE = 'rcl_preferences_consent';
-const STATISTICS_COOKIE = 'rcl_statistics_consent';
-const MARKETING_COOKIE = 'rcl_marketing_consent';
+const CORYPHA_USER = "rl_corypha_user";
+const CONSENT_GIVEN = "rcl_consent_given";
+const PREFERENCES_COOKIE = "rcl_preferences_consent";
+const STATISTICS_COOKIE = "rcl_statistics_consent";
+const MARKETING_COOKIE = "rcl_marketing_consent";
 
 class CookieBanner extends React.Component {
+  state = {
+    coryphaPreferences: [],
+  };
+
   constructor(props) {
     super(props);
 
@@ -27,28 +39,56 @@ class CookieBanner extends React.Component {
     };
 
     this.onScroll = this.onScroll.bind(this);
-    this.onTogglePreferencesCookies = this.onTogglePreferencesCookies.bind(this);
+    this.onTogglePreferencesCookies =
+      this.onTogglePreferencesCookies.bind(this);
     this.onToggleStatisticsCookies = this.onToggleStatisticsCookies.bind(this);
     this.onToggleMarketingCookies = this.onToggleMarketingCookies.bind(this);
     this.onAcceptAll = this.onAcceptAll.bind(this);
     this.confirm = this.confirm.bind(this);
     this.decline = this.decline.bind(this);
     this.consetsCallback = this.consetsCallback.bind(this);
+    this.onToggleCoryphaPreference = this.onToggleCoryphaPreference.bind(this);
 
     this.cookies = new Cookies(wholeDomain);
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     const { dismissOnScroll } = this.props;
+
+    if (isUsingCorypha(this.props)) {
+      if (this.cookies.get(CONSENT_GIVEN)) {
+        const { hasNewVersion, preferences } =
+          await checkVersionCoryphaPreferences(this.props);
+
+        if (hasNewVersion) {
+          this.cookies.clear();
+
+          this.setState({ coryphaPreferences: preferences }, () => {
+            this.forceUpdate();
+          });
+        }
+      } else {
+        const preferences = await fetchCoryphaPreferences(this.props);
+
+        this.setState({
+          coryphaPreferences: preferences.map((preference) => {
+            return {
+              ...preference,
+              accepted: preference.required,
+            };
+          }),
+        });
+      }
+    }
 
     if (isServer() || dismissOnScroll !== true) {
       return;
     }
 
     if (window.addEventListener) {
-      window.addEventListener('scroll', this.onScroll);
+      window.addEventListener("scroll", this.onScroll);
     } else if (window.attachEvent) {
-      window.attachEvent('onscroll', this.onScroll); // < IE9
+      window.attachEvent("onscroll", this.onScroll); // < IE9
     }
   }
 
@@ -58,9 +98,9 @@ class CookieBanner extends React.Component {
     }
 
     if (window.removeEventListener) {
-      window.removeEventListener('scroll', this.onScroll);
+      window.removeEventListener("scroll", this.onScroll);
     } else if (window.detachEvent) {
-      window.detachEvent('onscroll', this.onScroll); // < IE9
+      window.detachEvent("onscroll", this.onScroll); // < IE9
     }
   }
 
@@ -80,46 +120,103 @@ class CookieBanner extends React.Component {
     this.setState({ marketingCookies: value });
   }
 
+  onToggleCoryphaPreference(value, preference) {
+    const coryphaPreferences = [...this.state.coryphaPreferences];
+    const changedPreference = coryphaPreferences.find(
+      ({ id }) => id === preference.id
+    );
+
+    changedPreference.accepted = value;
+
+    this.setState({ coryphaPreferences });
+  }
+
   onAcceptAll() {
     const {
       onAcceptPreferences = () => {},
       onAcceptStatistics = () => {},
       onAcceptMarketing = () => {},
+      onAcceptCoryphaPreferences = () => {},
     } = this.props;
 
-    this.cookies.set(CONSENT_GIVEN);
-    this.cookies.set(PREFERENCES_COOKIE);
-    this.cookies.set(STATISTICS_COOKIE);
-    this.cookies.set(MARKETING_COOKIE);
+    if (isUsingCorypha(this.props)) {
+      this.cookies.set(CONSENT_GIVEN);
+      this.cookies.set({
+        key: CORYPHA_USER,
+        value: this.props.coryphaUserId || uuidv4(),
+      });
 
-    onAcceptPreferences();
-    onAcceptStatistics();
-    onAcceptMarketing();
+      this.state.coryphaPreferences.forEach(({ name }) => {
+        this.cookies.set(`rl_${slugify(name.toLowerCase(), "_")}_consent`);
+      });
+
+      onAcceptCoryphaPreferences(this.state.coryphaPreferences);
+      saveCoryphaPreferences(
+        this.props,
+        this.state.coryphaPreferences.map((preference) => ({
+          id: preference.id,
+          accepted: true,
+        }))
+      );
+    } else {
+      this.cookies.set(CONSENT_GIVEN);
+      this.cookies.set(PREFERENCES_COOKIE);
+      this.cookies.set(STATISTICS_COOKIE);
+      this.cookies.set(MARKETING_COOKIE);
+
+      onAcceptPreferences();
+      onAcceptStatistics();
+      onAcceptMarketing();
+    }
 
     this.forceUpdate();
   }
 
   confirm() {
-    const { preferencesCookies, statisticsCookies, marketingCookies } = this.state;
+    if (isUsingCorypha(this.props)) {
+      this.cookies.set(CONSENT_GIVEN);
+      this.cookies.set({
+        key: CORYPHA_USER,
+        value: this.props.coryphaUserId || uuidv4(),
+      });
 
-    this.cookies.set(CONSENT_GIVEN);
+      this.state.coryphaPreferences.forEach(({ name, accepted }) => {
+        this.cookies.set({
+          key: `rl_${slugify(name.toLowerCase(), "_")}_consent`,
+          value: accepted,
+        });
+      });
 
-    if (preferencesCookies) {
-      this.cookies.set(PREFERENCES_COOKIE);
+      saveCoryphaPreferences(
+        this.props,
+        this.state.coryphaPreferences.map((preference) => ({
+          id: preference.id,
+          accepted: preference.accepted,
+        }))
+      );
     } else {
-      this.cookies.remove(PREFERENCES_COOKIE);
-    }
+      const { preferencesCookies, statisticsCookies, marketingCookies } =
+        this.state;
 
-    if (statisticsCookies) {
-      this.cookies.set(STATISTICS_COOKIE);
-    } else {
-      this.cookies.remove(STATISTICS_COOKIE);
-    }
+      this.cookies.set(CONSENT_GIVEN);
 
-    if (marketingCookies) {
-      this.cookies.set(MARKETING_COOKIE);
-    } else {
-      this.cookies.remove(MARKETING_COOKIE);
+      if (preferencesCookies) {
+        this.cookies.set(PREFERENCES_COOKIE);
+      } else {
+        this.cookies.remove(PREFERENCES_COOKIE);
+      }
+
+      if (statisticsCookies) {
+        this.cookies.set(STATISTICS_COOKIE);
+      } else {
+        this.cookies.remove(STATISTICS_COOKIE);
+      }
+
+      if (marketingCookies) {
+        this.cookies.set(MARKETING_COOKIE);
+      } else {
+        this.cookies.remove(MARKETING_COOKIE);
+      }
     }
 
     this.forceUpdate();
@@ -130,16 +227,28 @@ class CookieBanner extends React.Component {
       onDeclinePreferences = () => {},
       onDeclineStatistics = () => {},
       onDeclineMarketing = () => {},
+      onDeclineCoryphaPreferences = () => {},
     } = this.props;
 
-    this.cookies.set(CONSENT_GIVEN);
-    this.cookies.remove(PREFERENCES_COOKIE);
-    this.cookies.remove(STATISTICS_COOKIE);
-    this.cookies.remove(MARKETING_COOKIE);
+    if (isUsingCorypha(this.props)) {
+      this.cookies.set(CONSENT_GIVEN);
+      this.cookies.remove(CORYPHA_USER);
 
-    onDeclinePreferences();
-    onDeclineStatistics();
-    onDeclineMarketing();
+      this.state.coryphaPreferences.forEach(({ name }) => {
+        this.cookies.remove(`rl_${slugify(name.toLowerCase(), "_")}_consent`);
+      });
+
+      onDeclineCoryphaPreferences(this.state.coryphaPreferences);
+    } else {
+      this.cookies.set(CONSENT_GIVEN);
+      this.cookies.remove(PREFERENCES_COOKIE);
+      this.cookies.remove(STATISTICS_COOKIE);
+      this.cookies.remove(MARKETING_COOKIE);
+
+      onDeclinePreferences();
+      onDeclineStatistics();
+      onDeclineMarketing();
+    }
 
     this.forceUpdate();
   }
@@ -236,9 +345,11 @@ class CookieBanner extends React.Component {
       onDecline: this.decline,
       onConfirm: this.confirm,
       onAcceptAll: this.onAcceptAll,
+      coryphaPreferences: this.state.coryphaPreferences,
+      onToggleCoryphaPreference: this.onToggleCoryphaPreference,
     };
 
-    return (<CookieBannerContent {...contentProps} />);
+    return <CookieBannerContent {...contentProps} />;
   }
 }
 
@@ -272,6 +383,12 @@ CookieBanner.protoTypes = {
   onDeclinePreferences: PropTypes.func,
   onDeclineStatistics: PropTypes.func,
   onDeclineMarketing: PropTypes.func,
+  coryphaUserId: PropTypes.string,
+  coryphaDocumentCode: PropTypes.string,
+  coryphaDocumentLanguage: PropTypes.string,
+  coryphaApiKey: PropTypes.string,
+  onAcceptCoryphaPreferences: PropTypes.func,
+  onDeclineCoryphaPreferences: PropTypes.func,
 };
 
 export default CookieBanner;

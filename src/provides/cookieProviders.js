@@ -1,11 +1,11 @@
-import React, { useState, useContext, createContext } from 'react';
-import { useCookies } from 'react-cookie';
-import { getExpirationDate } from '../helpers';
+import React, { useState, useContext, createContext } from "react";
+import { useCookies } from "react-cookie";
+import { getExpirationDate } from "../helpers";
 
-const CONSENT_GIVEN = 'rcl_consent_given';
-const PREFERENCES_COOKIE = 'rcl_preferences_consent';
-const STATISTICS_COOKIE = 'rcl_statistics_consent';
-const MARKETING_COOKIE = 'rcl_marketing_consent';
+const CONSENT_GIVEN = "rcl_consent_given";
+const PREFERENCES_COOKIE = "rcl_preferences_consent";
+const STATISTICS_COOKIE = "rcl_statistics_consent";
+const MARKETING_COOKIE = "rcl_marketing_consent";
 
 const PreferencesContext = createContext();
 
@@ -32,7 +32,11 @@ const CookieBannerProvider = ({ children }) => {
     }
   };
 
-  const onSaveConsents = ({ preferences = false, statistics = false, marketing = false }) => {
+  const onSaveConsents = ({
+    preferences = false,
+    statistics = false,
+    marketing = false,
+  }) => {
     toggleCookie(PREFERENCES_COOKIE, preferences);
     toggleCookie(STATISTICS_COOKIE, statistics);
     toggleCookie(MARKETING_COOKIE, marketing);

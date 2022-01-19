@@ -1,14 +1,14 @@
-import React from 'react';
-import CookieOption from './CookieOption';
-import bannerStyle from './bannerStyle';
+import React from "react";
+import CookieOption from "./CookieOption";
+import bannerStyle from "./bannerStyle";
 
 export default (props = {}) => {
   const {
     styles = {},
-    necessaryOptionText = 'Necessary',
-    preferencesOptionText = 'Preferences',
-    statisticsOptionText = 'Statistics',
-    marketingOptionText = 'Marketing',
+    necessaryOptionText = "Necessary",
+    preferencesOptionText = "Preferences",
+    statisticsOptionText = "Statistics",
+    marketingOptionText = "Marketing",
     showPreferencesOption = true,
     showStatisticsOption = true,
     showMarketingOption = true,
@@ -18,6 +18,8 @@ export default (props = {}) => {
     onTogglePreferencesCookies = () => {},
     onToggleStatisticsCookies = () => {},
     onToggleMarketingCookies = () => {},
+    coryphaPreferences = [],
+    onToggleCoryphaPreference = () => {},
   } = props;
 
   const {
@@ -27,53 +29,77 @@ export default (props = {}) => {
     checkbox: checkboxStyle,
   } = { ...bannerStyle, ...styles };
 
-  const cookieOptionStyle = { optionWrapperStyle, optionLabelStyle, checkboxStyle };
+  const cookieOptionStyle = {
+    optionWrapperStyle,
+    optionLabelStyle,
+    checkboxStyle,
+  };
 
   return (
     <div className="react-cookie-law-select-pane" style={selectPaneStyle}>
-      <CookieOption
-        id="check-required-cookies"
-        text={necessaryOptionText}
-        styles={cookieOptionStyle}
-        disabled
-        checked
-      />
-
-      {
-        showPreferencesOption && (
+      {coryphaPreferences.length > 0 ? (
+        <React.Fragment>
           <CookieOption
-            id="check-preferences-cookies"
-            text={preferencesOptionText}
+            id="check-required-cookies"
+            text={necessaryOptionText}
             styles={cookieOptionStyle}
-            checked={preferencesDefaultChecked}
-            onChange={onTogglePreferencesCookies}
+            disabled
+            checked
           />
-        )
-      }
 
-      {
-        showStatisticsOption && (
+          {coryphaPreferences.map((preference) => (
+            <CookieOption
+              key={preference.id}
+              id={preference.id}
+              text={preference.name}
+              styles={cookieOptionStyle}
+              disabled={preference.required}
+              checked={preference.required}
+              onChange={(value) => onToggleCoryphaPreference(value, preference)}
+            />
+          ))}
+        </React.Fragment>
+      ) : (
+        <React.Fragment>
           <CookieOption
-            id="check-statistics-cookies"
-            text={statisticsOptionText}
+            id="check-required-cookies"
+            text={necessaryOptionText}
             styles={cookieOptionStyle}
-            checked={statisticsDefaultChecked}
-            onChange={onToggleStatisticsCookies}
+            disabled
+            checked
           />
-        )
-      }
 
-      {
-        showMarketingOption && (
-          <CookieOption
-            id="check-marketing-cookies"
-            text={marketingOptionText}
-            styles={cookieOptionStyle}
-            checked={marketingDefaultChecked}
-            onChange={onToggleMarketingCookies}
-          />
-        )
-      }
+          {showPreferencesOption && (
+            <CookieOption
+              id="check-preferences-cookies"
+              text={preferencesOptionText}
+              styles={cookieOptionStyle}
+              checked={preferencesDefaultChecked}
+              onChange={onTogglePreferencesCookies}
+            />
+          )}
+
+          {showStatisticsOption && (
+            <CookieOption
+              id="check-statistics-cookies"
+              text={statisticsOptionText}
+              styles={cookieOptionStyle}
+              checked={statisticsDefaultChecked}
+              onChange={onToggleStatisticsCookies}
+            />
+          )}
+
+          {showMarketingOption && (
+            <CookieOption
+              id="check-marketing-cookies"
+              text={marketingOptionText}
+              styles={cookieOptionStyle}
+              checked={marketingDefaultChecked}
+              onChange={onToggleMarketingCookies}
+            />
+          )}
+        </React.Fragment>
+      )}
     </div>
   );
 };
