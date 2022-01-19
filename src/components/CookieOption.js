@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 class CookieOption extends React.Component {
   constructor(props) {
@@ -19,24 +19,18 @@ class CookieOption extends React.Component {
   }
 
   render() {
-    const {
-      id = '',
-      text = '',
-      styles = {},
-      disabled = false,
-    } = this.props;
+    const { id = "", text = "", styles = {}, disabled = false } = this.props;
 
     const isDisabled = disabled ? { disabled } : {};
     const { checked } = this.state;
 
-    const {
-      optionWrapperStyle,
-      optionLabelStyle,
-      checkboxStyle,
-    } = styles;
+    const { optionWrapperStyle, optionLabelStyle, checkboxStyle } = styles;
 
     return (
-      <div className="react-cookie-law-option-wrapper" style={optionWrapperStyle}>
+      <div
+        className="react-cookie-law-option-wrapper"
+        style={optionWrapperStyle}
+      >
         <input
           type="checkbox"
           id={id}
@@ -46,7 +40,9 @@ class CookieOption extends React.Component {
           onChange={this.handleOnChange}
           {...isDisabled}
         />
-        <label htmlFor={id} style={optionLabelStyle}>{text}</label>
+        <label htmlFor={id} style={optionLabelStyle}>
+          {text}
+        </label>
       </div>
     );
   }
