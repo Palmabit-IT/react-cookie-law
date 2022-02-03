@@ -2,10 +2,12 @@
 
 exports[`CookieBanner component should be rendered 1`] = `
 <CookieBannerContent
+  coryphaPreferences={Array []}
   message="Text"
   onAcceptAll={[Function]}
   onConfirm={[Function]}
   onDecline={[Function]}
+  onToggleCoryphaPreference={[Function]}
   onToggleMarketingCookies={[Function]}
   onTogglePreferencesCookies={[Function]}
   onToggleStatisticsCookies={[Function]}
