@@ -46,11 +46,8 @@ React.renderComponent(
 ### Options
 
 |Name|Type|Default|Description|
-
 |----|----|-------|-----------|
-
 | **className** | string | | **optional**. Classes |
-
 | **message** | string | | **Required**. Custom text of the banner |
 | **wholeDomain** | bool | false | _optional_. Enable or disable the root path '/' option when a cookie is set |
 | **policyLink** | string | "/#" | _optional_. Link to privacy policy page |
@@ -81,7 +78,7 @@ React.renderComponent(
 | **coryphaUserId** | string | "1" | _optional_. User ID of the current user |
 | **coryphaDocumentCode** | string | "my-app" | \*optional\*\*. The unique document code assigned to the application |
 | **coryphaDocumentLanguage** | string | "en" | *optional\*\*. Callback called if *marketing\* cookies is declined |
-| **coryphaApiKey** | string | "28b1a6f4-2a0c-4a4a-9fd1-3ac0cae8d2cf" | \*optional\*\*. Your Corypha API Key |
+| **coryphaApiKey** | string | "12345678-abcd-dcba-abcd-1234567890ab" | \*optional\*\*. Your Corypha API Key |
 | **onAcceptCoryphaPreferences** | function | Function | _optional_. Callback called when Corypha cookies are accepted |
 | **onDeclineCoryphaPreferences** | function | Function | _optional_. Callback called when Corypha cookies are declined |
 
@@ -99,27 +96,16 @@ React.renderComponent(
 ```
 
 |Style option|Description|
-
 |----|----|
-
 | **dialog** | Style that override `.react-cookie-law-dialog` class |
-
 | **container** | `.react-cookie-law-container` class |
-
 | **message** | Style for banner text (`.react-cookie-law-message` class) |
-
 | **policy** | Style for cookie policy link (`.react-cookie-law-policy` class) |
-
 | **selectPane** | Style for select pane (`.react-cookie-law-select-pane` class) |
-
 | **optionWrapper** | Style for option checkbox wrapper (`.react-cookie-law-option-wrapper` class) |
-
 | **optionLabel** | Style for the text of checkbox labels |
-
 | **checkbox** | Style for checkboxes (`.react-cookie-law-option-checkbox` class) |
-
 | **buttonWrapper** | Style for buttons wrapper (`.react-cookie-law-dialog` class) |
-
 | **button** | Style for buttons (`.react-cookie-law-dialog` class) |
 
 ## Test
