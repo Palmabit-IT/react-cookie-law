@@ -4,14 +4,12 @@ const getExpirationDate = (date = null, expiringDays = 365) => {
   return expireDate;
 };
 
-const isServer = () => typeof navigator === "undefined";
+const isServer = () => typeof navigator === 'undefined';
 
 const isUsingCorypha = ({
   coryphaApiKey,
   coryphaDocumentCode,
   coryphaDocumentLanguage,
-}) => {
-  return coryphaApiKey && coryphaDocumentCode && coryphaDocumentLanguage;
-};
+}) => coryphaApiKey && coryphaDocumentCode && coryphaDocumentLanguage;
 
 export { getExpirationDate, isServer, isUsingCorypha };

@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
-import PropTypes from "prop-types";
-import CookieBannerContent from "./CookieBannerContent";
-import { useCookieBanner } from "../provides/cookieProviders";
-import { isServer } from "../helpers";
+import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
+import CookieBannerContent from './CookieBannerContent';
+import { useCookieBanner } from '../provides/cookieProviders';
+import { isServer } from '../helpers';
 
 const ReactCookieBanner = (props) => {
   const {
@@ -13,13 +13,13 @@ const ReactCookieBanner = (props) => {
   } = props;
 
   const [preferencesCookie, setPreferencesCookie] = useState(
-    preferencesDefaultChecked
+    preferencesDefaultChecked,
   );
   const [statisticsCookie, setStatisticsCookie] = useState(
-    statisticsDefaultChecked
+    statisticsDefaultChecked,
   );
   const [marketingCookie, setMarketingCookie] = useState(
-    marketingDefaultChecked
+    marketingDefaultChecked,
   );
   const [, onSaveConsents, onAcceptAll] = useCookieBanner();
 
@@ -29,17 +29,17 @@ const ReactCookieBanner = (props) => {
     }
 
     if (window.addEventListener) {
-      window.addEventListener("scroll", onAcceptAll);
+      window.addEventListener('scroll', onAcceptAll);
     } else if (window.attachEvent) {
-      window.attachEvent("onscroll", onAcceptAll); // < IE9
+      window.attachEvent('onscroll', onAcceptAll); // < IE9
     }
 
     // eslint-disable-next-line consistent-return
     return () => {
       if (window.removeEventListener) {
-        window.removeEventListener("scroll", onAcceptAll);
+        window.removeEventListener('scroll', onAcceptAll);
       } else if (window.detachEvent) {
-        window.detachEvent("onscroll", onAcceptAll); // < IE9
+        window.detachEvent('onscroll', onAcceptAll); // < IE9
       }
     };
   }, []);

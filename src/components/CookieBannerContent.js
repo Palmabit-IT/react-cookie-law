@@ -1,6 +1,6 @@
-import React from "react";
-import bannerStyle from "./bannerStyle";
-import CookieBannerPreferences from "./CookieBannerPreferences";
+import React from 'react';
+import bannerStyle from './bannerStyle';
+import CookieBannerPreferences from './CookieBannerPreferences';
 
 class CookieBannerContent extends React.Component {
   constructor(props) {
@@ -12,13 +12,13 @@ class CookieBannerContent extends React.Component {
   render() {
     const {
       styles = {},
-      className = "",
-      message = "No text",
-      policyLink = "/#",
-      privacyPolicyLinkText = "Privacy Policy",
-      acceptButtonText = "Accept all",
-      managePreferencesButtonText = "Mange my cookies",
-      savePreferencesButtonText = "Save and close",
+      className = '',
+      message = 'No text',
+      policyLink = '/#',
+      privacyPolicyLinkText = 'Privacy Policy',
+      acceptButtonText = 'Accept all',
+      managePreferencesButtonText = 'Mange my cookies',
+      savePreferencesButtonText = 'Save and close',
       onConfirm = () => {},
       onAcceptAll = () => {},
     } = this.props;

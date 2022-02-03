@@ -1,14 +1,14 @@
-import React from "react";
-import CookieOption from "./CookieOption";
-import bannerStyle from "./bannerStyle";
+import React from 'react';
+import CookieOption from './CookieOption';
+import bannerStyle from './bannerStyle';
 
 export default (props = {}) => {
   const {
     styles = {},
-    necessaryOptionText = "Necessary",
-    preferencesOptionText = "Preferences",
-    statisticsOptionText = "Statistics",
-    marketingOptionText = "Marketing",
+    necessaryOptionText = 'Necessary',
+    preferencesOptionText = 'Preferences',
+    statisticsOptionText = 'Statistics',
+    marketingOptionText = 'Marketing',
     showPreferencesOption = true,
     showStatisticsOption = true,
     showMarketingOption = true,
@@ -38,7 +38,7 @@ export default (props = {}) => {
   return (
     <div className="react-cookie-law-select-pane" style={selectPaneStyle}>
       {coryphaPreferences.length > 0 ? (
-        <React.Fragment>
+        <>
           <CookieOption
             id="check-required-cookies"
             text={necessaryOptionText}
@@ -58,9 +58,9 @@ export default (props = {}) => {
               onChange={(value) => onToggleCoryphaPreference(value, preference)}
             />
           ))}
-        </React.Fragment>
+        </>
       ) : (
-        <React.Fragment>
+        <>
           <CookieOption
             id="check-required-cookies"
             text={necessaryOptionText}
@@ -98,7 +98,7 @@ export default (props = {}) => {
               onChange={onToggleMarketingCookies}
             />
           )}
-        </React.Fragment>
+        </>
       )}
     </div>
   );

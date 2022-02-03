@@ -1,5 +1,6 @@
-import Cookies from "./Cookies";
-const CORYPHA_POLICIES_URL = "https://stagingapi.corypha.app/app/v1/policies";
+import Cookies from './Cookies';
+
+const CORYPHA_POLICIES_URL = 'https://stagingapi.corypha.app/app/v1/policies';
 
 async function fetchCoryphaPreferences({
   coryphaApiKey,
@@ -9,9 +10,9 @@ async function fetchCoryphaPreferences({
   const response = await fetch(
     `${CORYPHA_POLICIES_URL}/${coryphaDocumentCode}?lang=${coryphaDocumentLanguage}`,
     {
-      method: "GET",
-      headers: { "X-API-KEY": coryphaApiKey },
-    }
+      method: 'GET',
+      headers: { 'X-API-KEY': coryphaApiKey },
+    },
   );
 
   if (response.status !== 200) {
@@ -20,21 +21,24 @@ async function fetchCoryphaPreferences({
 
   const data = await response.json();
 
-  return data.version?.preferences || [];
+  return data.version.preferences || [];
 }
 
-async function saveCoryphaPreferences(
-  { coryphaApiKey, coryphaUserId, coryphaDocumentCode, wholeDomain = false },
-  preferences
-) {
+async function saveCoryphaPreferences({
+  coryphaApiKey,
+  coryphaUserId,
+  coryphaDocumentCode,
+  wholeDomain = false,
+},
+preferences) {
   const cookies = new Cookies(wholeDomain);
-  const user = coryphaUserId || cookies.get("rl_corypha_user_id");
+  const user = coryphaUserId || cookies.get('rl_corypha_user_id');
 
   return fetch(`${CORYPHA_POLICIES_URL}/${coryphaDocumentCode}/users/${user}`, {
-    method: "PUT",
+    method: 'PUT',
     headers: {
-      "Content-Type": "application/json",
-      "X-API-KEY": coryphaApiKey,
+      'Content-Type': 'application/json',
+      'X-API-KEY': coryphaApiKey,
     },
     body: JSON.stringify({
       preferences: preferences.map((preference) => ({
@@ -53,14 +57,14 @@ async function checkVersionCoryphaPreferences({
   wholeDomain,
 }) {
   const cookies = new Cookies(wholeDomain);
-  const user = coryphaUserId || cookies.get("rl_corypha_user_id");
+  const user = coryphaUserId || cookies.get('rl_corypha_user_id');
 
   const response = await fetch(
     `${CORYPHA_POLICIES_URL}/${coryphaDocumentCode}/users/${user}/check?lang=${coryphaDocumentLanguage}`,
     {
-      method: "GET",
-      headers: { "X-API-KEY": coryphaApiKey },
-    }
+      method: 'GET',
+      headers: { 'X-API-KEY': coryphaApiKey },
+    },
   );
 
   if (response.status !== 200) {
@@ -71,7 +75,7 @@ async function checkVersionCoryphaPreferences({
 
   return {
     hasNewVersion: data.hasNewVersion,
-    preferences: data.version?.preferences || [],
+    preferences: data.version.preferences || [],
   };
 }
 

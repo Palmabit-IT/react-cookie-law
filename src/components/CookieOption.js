@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 class CookieOption extends React.Component {
   constructor(props) {
@@ -19,7 +19,12 @@ class CookieOption extends React.Component {
   }
 
   render() {
-    const { id = "", text = "", styles = {}, disabled = false } = this.props;
+    const {
+      id = '',
+      text = '',
+      styles = {},
+      disabled = false,
+    } = this.props;
 
     const isDisabled = disabled ? { disabled } : {};
     const { checked } = this.state;
