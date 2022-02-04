@@ -1,6 +1,6 @@
 import Cookies from './Cookies';
 
-const CORYPHA_POLICIES_URL = 'https://stagingapi.corypha.app/app/v1/policies';
+const CORYPHA_POLICIES_URL = 'https://api.corypha.app/app/v1/policies';
 
 async function fetchCoryphaPreferences({
   coryphaApiKey,

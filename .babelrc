@@ -3,11 +3,13 @@
     "@babel/preset-env",
     "@babel/preset-react"
   ],
+  "plugins": [
+    "@babel/transform-runtime"
+  ],
   "env": {
     "test": {
       "plugins": [
-        "@babel/plugin-transform-modules-commonjs",
-        "@babel/transform-runtime"
+        "@babel/plugin-transform-modules-commonjs"
       ]
     }
   }
