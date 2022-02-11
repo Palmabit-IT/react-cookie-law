@@ -81,20 +81,12 @@ class CookieBanner extends React.Component {
   }
 
   onAcceptAll() {
-    const {
-      onAcceptPreferences = () => {},
-      onAcceptStatistics = () => {},
-      onAcceptMarketing = () => {},
-    } = this.props;
-
     this.cookies.set(CONSENT_GIVEN);
     this.cookies.set(PREFERENCES_COOKIE);
     this.cookies.set(STATISTICS_COOKIE);
     this.cookies.set(MARKETING_COOKIE);
 
-    onAcceptPreferences();
-    onAcceptStatistics();
-    onAcceptMarketing();
+    this.consetsCallback();
 
     this.forceUpdate();
   }
@@ -121,6 +113,8 @@ class CookieBanner extends React.Component {
     } else {
       this.cookies.remove(MARKETING_COOKIE);
     }
+
+    this.consetsCallback();
 
     this.forceUpdate();
   }
@@ -205,7 +199,6 @@ class CookieBanner extends React.Component {
     } = this.props;
 
     if (this.cookies.get(CONSENT_GIVEN)) {
-      this.consetsCallback();
       return null;
     }
 
