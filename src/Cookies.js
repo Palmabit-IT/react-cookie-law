@@ -14,9 +14,15 @@ export default class Cookies {
 
   set(cookie, cookieExpiration) {
     const optionPath = this.whole_domain ? { path: '/' } : {};
+
+    console.log({
+      expires: cookieExpiration || getExpirationDate(),
+      ...optionPath,
+      ...this.options
+    });
     this.cookies.set(cookie, true, {
       expires: cookieExpiration || getExpirationDate(),
-      ...{ optionPath },
+      ...optionPath,
       ...this.options
     });
   }
