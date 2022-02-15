@@ -35,7 +35,7 @@ class CookieBanner extends React.Component {
     this.decline = this.decline.bind(this);
     this.consetsCallback = this.consetsCallback.bind(this);
 
-    this.cookies = new Cookies(wholeDomain);
+    this.cookies = new Cookies(wholeDomain, this.props.cookieOptions);
   }
 
   componentDidMount() {
@@ -82,9 +82,9 @@ class CookieBanner extends React.Component {
 
   onAcceptAll() {
     const {
-      onAcceptPreferences = () => {},
-      onAcceptStatistics = () => {},
-      onAcceptMarketing = () => {},
+      onAcceptPreferences = () => { },
+      onAcceptStatistics = () => { },
+      onAcceptMarketing = () => { },
     } = this.props;
 
     this.cookies.set(CONSENT_GIVEN);
@@ -102,7 +102,7 @@ class CookieBanner extends React.Component {
   confirm() {
     const { preferencesCookies, statisticsCookies, marketingCookies } = this.state;
 
-    this.cookies.set(CONSENT_GIVEN);
+    this.cookies.set(CONSENT_GIVEN,);
 
     if (preferencesCookies) {
       this.cookies.set(PREFERENCES_COOKIE);
@@ -127,9 +127,9 @@ class CookieBanner extends React.Component {
 
   decline() {
     const {
-      onDeclinePreferences = () => {},
-      onDeclineStatistics = () => {},
-      onDeclineMarketing = () => {},
+      onDeclinePreferences = () => { },
+      onDeclineStatistics = () => { },
+      onDeclineMarketing = () => { },
     } = this.props;
 
     this.cookies.set(CONSENT_GIVEN);
@@ -146,13 +146,13 @@ class CookieBanner extends React.Component {
 
   consetsCallback() {
     const {
-      onAccept = () => {},
-      onAcceptPreferences = () => {},
-      onAcceptStatistics = () => {},
-      onAcceptMarketing = () => {},
-      onDeclinePreferences = () => {},
-      onDeclineStatistics = () => {},
-      onDeclineMarketing = () => {},
+      onAccept = () => { },
+      onAcceptPreferences = () => { },
+      onAcceptStatistics = () => { },
+      onAcceptMarketing = () => { },
+      onDeclinePreferences = () => { },
+      onDeclineStatistics = () => { },
+      onDeclineMarketing = () => { },
     } = this.props;
 
     const hasPreferencesCookie = this.cookies.get(PREFERENCES_COOKIE);
@@ -272,6 +272,11 @@ CookieBanner.protoTypes = {
   onDeclinePreferences: PropTypes.func,
   onDeclineStatistics: PropTypes.func,
   onDeclineMarketing: PropTypes.func,
+  cookieOptions: PropTypes.shape({
+    secure: PropTypes.bool,
+    httpOnly: PropTypes.bool,
+    sameSite: PropTypes.bool
+  })
 };
 
 export default CookieBanner;
