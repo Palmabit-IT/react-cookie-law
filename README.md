@@ -74,10 +74,10 @@ React.renderComponent(
 
 #### Cookie Options
 
-| Name         | Type | Default | Description                                   |
-| ------------ | ---- | ------- | --------------------------------------------- |
-| **sameSite** | bool |         | _optional_. Strict or Lax enforcement         |
-| **secure**   | bool |         | _optional_. Is only accessible through HTTPS? |
+| Name         | Type                    | Default | Description                                   |
+| ------------ | ----------------------- | ------- | --------------------------------------------- |
+| **sameSite** | bool, none, lax, strict |         | _optional_. Strict or Lax enforcement         |
+| **secure**   | bool                    |         | _optional_. Is only accessible through HTTPS? |
 
 ## Style
 
