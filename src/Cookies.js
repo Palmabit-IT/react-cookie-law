@@ -24,7 +24,7 @@ export default class Cookies {
 
     this.cookies.set(cookie, true, {
       expires: cookieExpiration || getExpirationDate(),
-      ...{ optionPath },
+      ... optionPath,
     });
   }
 
