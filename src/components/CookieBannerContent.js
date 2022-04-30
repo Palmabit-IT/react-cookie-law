@@ -48,6 +48,7 @@ class CookieBannerContent extends React.Component {
 
           <a
             href={policyLink}
+            target="_blank"
             className="react-cookie-law-policy"
             style={policyStyle}
           >
