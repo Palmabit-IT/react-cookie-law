@@ -1,12 +1,12 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { ComponentProps } from 'react';
 import slugify from 'slugify';
 import { v4 as uuidv4 } from 'uuid';
 
 import Cookies from '../Cookies';
 import CookieBannerContent from './CookieBannerContent';
-import { isServer, isUsingCorypha } from '../helpers';
+import { CoryphaApiProps, isServer, isUsingCorypha } from '../helpers';
 import {
+  CoryphaPreference,
   fetchCoryphaPreferences,
   saveCoryphaPreferences,
   checkVersionCoryphaPreferences,
@@ -18,8 +18,30 @@ const PREFERENCES_COOKIE = 'rcl_preferences_consent';
 const STATISTICS_COOKIE = 'rcl_statistics_consent';
 const MARKETING_COOKIE = 'rcl_marketing_consent';
 
-class CookieBanner extends React.Component {
-  constructor(props) {
+interface Props extends CoryphaApiProps, ComponentProps<typeof CookieBannerContent> {
+  preferencesDefaultChecked?: boolean
+  statisticsDefaultChecked?: boolean
+  marketingDefaultChecked?: boolean
+  dismissOnScroll?: boolean
+  onAccept?: () => void
+  onAcceptCoryphaPreferences?: (preferences: CoryphaPreference[]) => void
+  onAcceptMarketing?: () => void
+  onAcceptPreferences?: () => void
+  onAcceptStatistics?: () => void
+  onDeclineMarketing?: () => void
+  onDeclinePreferences?: () => void
+  onDeclineStatistics?: () => void
+  onDeclineCoryphaPreferences?: (preferences: CoryphaPreference[]) => void
+}
+
+interface State {
+  preferencesCookies: boolean
+  statisticsCookies: boolean
+  marketingCookies: boolean
+  coryphaPreferences: CoryphaPreference[]
+}
+class CookieBanner extends React.Component<Props, State> {
+  constructor(props: Props) {
     super(props);
 
     const {
@@ -102,15 +124,15 @@ class CookieBanner extends React.Component {
     this.confirm();
   }
 
-  onTogglePreferencesCookies(value) {
+  onTogglePreferencesCookies(value?: boolean) {
     this.setState({ preferencesCookies: value });
   }
 
-  onToggleStatisticsCookies(value) {
+  onToggleStatisticsCookies(value?: boolean) {
     this.setState({ statisticsCookies: value });
   }
 
-  onToggleMarketingCookies(value) {
+  onToggleMarketingCookies(value?: boolean) {
     this.setState({ marketingCookies: value });
   }
 
@@ -128,10 +150,10 @@ class CookieBanner extends React.Component {
 
   onAcceptAll() {
     const {
-      onAcceptPreferences = () => {},
-      onAcceptStatistics = () => {},
-      onAcceptMarketing = () => {},
-      onAcceptCoryphaPreferences = () => {},
+      onAcceptPreferences = () => undefined,
+      onAcceptStatistics = () => undefined,
+      onAcceptMarketing = () => undefined,
+      onAcceptCoryphaPreferences = () => undefined,
       coryphaUserId,
     } = this.props;
 
@@ -169,6 +191,8 @@ class CookieBanner extends React.Component {
 
     this.forceUpdate();
   }
+
+  cookies: Cookies
 
   confirm() {
     const { coryphaUserId } = this.props;
@@ -224,10 +248,10 @@ class CookieBanner extends React.Component {
 
   decline() {
     const {
-      onDeclinePreferences = () => {},
-      onDeclineStatistics = () => {},
-      onDeclineMarketing = () => {},
-      onDeclineCoryphaPreferences = () => {},
+      onDeclinePreferences = () => undefined,
+      onDeclineStatistics = () => undefined,
+      onDeclineMarketing = () => undefined,
+      onDeclineCoryphaPreferences = () => undefined,
     } = this.props;
 
     const { coryphaPreferences = [] } = this.state;
@@ -257,13 +281,13 @@ class CookieBanner extends React.Component {
 
   consetsCallback() {
     const {
-      onAccept = () => {},
-      onAcceptPreferences = () => {},
-      onAcceptStatistics = () => {},
-      onAcceptMarketing = () => {},
-      onDeclinePreferences = () => {},
-      onDeclineStatistics = () => {},
-      onDeclineMarketing = () => {},
+      onAccept = () => undefined,
+      onAcceptPreferences = () => undefined,
+      onAcceptStatistics = () => undefined,
+      onAcceptMarketing = () => undefined,
+      onDeclinePreferences = () => undefined,
+      onDeclineStatistics = () => undefined,
+      onDeclineMarketing = () => undefined,
     } = this.props;
 
     const hasPreferencesCookie = this.cookies.get(PREFERENCES_COOKIE);
@@ -356,43 +380,5 @@ class CookieBanner extends React.Component {
     return <CookieBannerContent {...contentProps} />;
   }
 }
-
-CookieBanner.protoTypes = {
-  className: PropTypes.string,
-  styles: PropTypes.object,
-  message: PropTypes.string.isRequired,
-  wholeDomain: PropTypes.bool,
-  policyLink: PropTypes.string,
-  privacyPolicyLinkText: PropTypes.string,
-  necessaryOptionText: PropTypes.string,
-  preferencesOptionText: PropTypes.string,
-  statisticsOptionText: PropTypes.string,
-  marketingOptionText: PropTypes.string,
-  acceptButtonText: PropTypes.string,
-  declineButtonText: PropTypes.string,
-  managePreferencesButtonText: PropTypes.string,
-  savePreferencesButtonText: PropTypes.string,
-  showDeclineButton: PropTypes.bool,
-  dismissOnScroll: PropTypes.bool,
-  showPreferencesOption: PropTypes.bool,
-  showStatisticsOption: PropTypes.bool,
-  showMarketingOption: PropTypes.bool,
-  preferencesDefaultChecked: PropTypes.bool,
-  statisticsDefaultChecked: PropTypes.bool,
-  marketingDefaultChecked: PropTypes.bool,
-  onAccept: PropTypes.func,
-  onAcceptPreferences: PropTypes.func,
-  onAcceptStatistics: PropTypes.func,
-  onAcceptMarketing: PropTypes.func,
-  onDeclinePreferences: PropTypes.func,
-  onDeclineStatistics: PropTypes.func,
-  onDeclineMarketing: PropTypes.func,
-  coryphaUserId: PropTypes.string,
-  coryphaDocumentCode: PropTypes.string,
-  coryphaDocumentLanguage: PropTypes.string,
-  coryphaApiKey: PropTypes.string,
-  onAcceptCoryphaPreferences: PropTypes.func,
-  onDeclineCoryphaPreferences: PropTypes.func,
-};
 
 export default CookieBanner;

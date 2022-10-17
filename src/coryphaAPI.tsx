@@ -1,12 +1,25 @@
 import Cookies from './Cookies';
+import { CoryphaApiProps } from './helpers';
 
 const CORYPHA_POLICIES_URL = 'https://api.corypha.app/app/v1/policies';
+
+export interface CoryphaPreference {
+  id: string
+  name: string
+  accepted: boolean
+  required?: boolean
+}
+
+interface CoryphaApiCheckResponse {
+  hasNewVersion: boolean
+  version: {preferences: CoryphaPreference[]}
+}
 
 async function fetchCoryphaPreferences({
   coryphaApiKey,
   coryphaDocumentCode,
   coryphaDocumentLanguage,
-}) {
+}: CoryphaApiProps): Promise<CoryphaPreference[]> {
   const response = await fetch(
     `${CORYPHA_POLICIES_URL}/${coryphaDocumentCode}?lang=${coryphaDocumentLanguage}`,
     {
@@ -19,7 +32,7 @@ async function fetchCoryphaPreferences({
     return [];
   }
 
-  const data = await response.json();
+  const data: CoryphaApiCheckResponse = await response.json();
 
   return data.version.preferences || [];
 }
@@ -29,8 +42,8 @@ async function saveCoryphaPreferences({
   coryphaUserId,
   coryphaDocumentCode,
   wholeDomain = false,
-},
-preferences) {
+}: CoryphaApiProps,
+preferences: Pick<CoryphaPreference, 'id' | 'accepted'>[]) {
   const cookies = new Cookies(wholeDomain);
   const user = coryphaUserId || cookies.get('rl_corypha_user_id');
 
@@ -55,7 +68,7 @@ async function checkVersionCoryphaPreferences({
   coryphaDocumentCode,
   coryphaDocumentLanguage,
   wholeDomain,
-}) {
+}: CoryphaApiProps) {
   const cookies = new Cookies(wholeDomain);
   const user = coryphaUserId || cookies.get('rl_corypha_user_id');
 
@@ -71,7 +84,7 @@ async function checkVersionCoryphaPreferences({
     return { hasNewVersion: false, preferences: [] };
   }
 
-  const data = await response.json();
+  const data: CoryphaApiCheckResponse = await response.json();
 
   return {
     hasNewVersion: data.hasNewVersion,

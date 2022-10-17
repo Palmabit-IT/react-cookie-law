@@ -2,8 +2,29 @@ import React from 'react';
 import bannerStyle from './bannerStyle';
 import CookieBannerPreferences from './CookieBannerPreferences';
 
-class CookieBannerContent extends React.Component {
-  constructor(props) {
+interface Props extends React.ComponentProps<typeof CookieBannerPreferences> {
+  acceptButtonText?: string
+  className?: string
+  // Not used to-date.
+  declineButtonText?: string
+  managePreferencesButtonText?: string
+  message?: string
+  onAcceptAll?: () => void
+  // Not used to-date.
+  onDecline?: () => void
+  onConfirm?: () => void
+  policyLink?: string
+  privacyPolicyLinkText?: string
+  savePreferencesButtonText?: string
+  // Not used to-date.
+  showDeclineButton?: boolean
+}
+
+interface State {
+  showPreferences?: boolean
+}
+class CookieBannerContent extends React.Component<Props, State> {
+  constructor(props: Props) {
     super(props);
 
     this.state = { showPreferences: false };
@@ -11,16 +32,16 @@ class CookieBannerContent extends React.Component {
 
   render() {
     const {
-      styles = {},
+      acceptButtonText = 'Accept all',
       className = '',
+      managePreferencesButtonText = 'Mange my cookies',
       message = 'No text',
+      onAcceptAll = () => undefined,
+      onConfirm = () => undefined,
       policyLink = '/#',
       privacyPolicyLinkText = 'Privacy Policy',
-      acceptButtonText = 'Accept all',
-      managePreferencesButtonText = 'Mange my cookies',
       savePreferencesButtonText = 'Save and close',
-      onConfirm = () => {},
-      onAcceptAll = () => {},
+      ...preferenceProps
     } = this.props;
 
     const { showPreferences } = this.state;
@@ -32,7 +53,7 @@ class CookieBannerContent extends React.Component {
       policy: policyStyle,
       buttonWrapper: buttonWrapperStyle,
       button: buttonStyle,
-    } = { ...bannerStyle, ...styles };
+    } = { ...bannerStyle, ...preferenceProps.styles };
 
     return (
       <div
@@ -44,7 +65,7 @@ class CookieBannerContent extends React.Component {
             {message}
           </div>
 
-          {showPreferences && <CookieBannerPreferences {...this.props} />}
+          {showPreferences && <CookieBannerPreferences {...preferenceProps} />}
 
           <a
             href={policyLink}

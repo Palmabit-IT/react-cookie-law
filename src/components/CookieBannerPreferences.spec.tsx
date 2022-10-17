@@ -26,9 +26,9 @@ describe('CookieBannerPreferences component', () => {
       preferencesDefaultChecked: false,
       statisticsDefaultChecked: false,
       marketingDefaultChecked: false,
-      onTogglePreferencesCookies: () => {},
-      onToggleStatisticsCookies: () => {},
-      onToggleMarketingCookies: () => {},
+      onTogglePreferencesCookies: () => undefined,
+      onToggleStatisticsCookies: () => undefined,
+      onToggleMarketingCookies: () => undefined,
     };
 
     const component = mount(
@@ -87,12 +87,8 @@ describe('CookieBannerPreferences component', () => {
   });
 
   test('should show all checkboxes as default', () => {
-    const props = {
-      onDecline: jest.fn(),
-    };
-
     const component = mount(
-      <CookieBannerPreferences {...props} />,
+      <CookieBannerPreferences />,
     );
 
     expect(component.find('#check-preferences-cookies').exists()).toBeTruthy();

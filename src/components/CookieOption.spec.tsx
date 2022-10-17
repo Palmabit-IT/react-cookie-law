@@ -57,7 +57,7 @@ describe('CookieOption component', () => {
       onChange: jest.fn(),
     };
 
-    const component = mount(
+    const component = mount<CookieOption>(
       <CookieOption {...props} />,
     );
 

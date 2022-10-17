@@ -1,5 +1,6 @@
 import React from 'react';
 import { mount, shallow } from 'enzyme';
+
 import CookieBanner from './CookieBanner';
 import CookieBannerContent from './CookieBannerContent';
 
@@ -52,7 +53,7 @@ describe('CookieBanner component', () => {
     );
 
     expect(component.html().length).toBeGreaterThan(0);
-    expect(component.contains(CookieBannerContent)).toBeTruthy();
+    expect(component.find(CookieBannerContent)).toHaveLength(1);
     component.find(CookieBannerContent).prop('onConfirm')();
   });
 
@@ -62,7 +63,7 @@ describe('CookieBanner component', () => {
     );
 
     expect(component.html().length).toBeGreaterThan(0);
-    expect(component.contains(CookieBannerContent)).toBeTruthy();
+    expect(component.find(CookieBannerContent)).toHaveLength(1);
     component.find(CookieBannerContent).prop('onDecline')();
     // expect(component.html()).toBeNull();
   });

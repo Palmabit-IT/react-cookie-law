@@ -1,8 +1,28 @@
 import React from 'react';
 import CookieOption from './CookieOption';
-import bannerStyle from './bannerStyle';
+import bannerStyle, { StyleableComponents } from './bannerStyle';
 
-export default (props = {}) => {
+import type { CoryphaPreference } from '../coryphaAPI';
+
+export interface Props {
+  styles?: Partial<Record<StyleableComponents, React.CSSProperties>>
+  necessaryOptionText?: string
+  preferencesOptionText?: string
+  statisticsOptionText?: string
+  marketingOptionText?: string
+  showPreferencesOption?: boolean
+  showStatisticsOption?: boolean
+  showMarketingOption?: boolean
+  preferencesDefaultChecked?: boolean
+  statisticsDefaultChecked?: boolean
+  marketingDefaultChecked?: boolean
+  onTogglePreferencesCookies?: (checked?: boolean) => void
+  onToggleStatisticsCookies?: (checked?: boolean) => void
+  onToggleMarketingCookies?: (checked?: boolean) => void
+  coryphaPreferences?: CoryphaPreference[]
+  onToggleCoryphaPreference?: (active: boolean, preference: CoryphaPreference) => void
+}
+const CookieBannerPreferences: React.FC<Props> = (props: Props = {}) => {
   const {
     styles = {},
     necessaryOptionText = 'Necessary',
@@ -15,11 +35,11 @@ export default (props = {}) => {
     preferencesDefaultChecked = false,
     statisticsDefaultChecked = false,
     marketingDefaultChecked = false,
-    onTogglePreferencesCookies = () => {},
-    onToggleStatisticsCookies = () => {},
-    onToggleMarketingCookies = () => {},
+    onTogglePreferencesCookies = () => undefined,
+    onToggleStatisticsCookies = () => undefined,
+    onToggleMarketingCookies = () => undefined,
     coryphaPreferences = [],
-    onToggleCoryphaPreference = () => {},
+    onToggleCoryphaPreference = () => undefined,
   } = props;
 
   const {
@@ -103,3 +123,5 @@ export default (props = {}) => {
     </div>
   );
 };
+
+export default CookieBannerPreferences
