@@ -6,12 +6,12 @@ exports[`CookieBannerContent component should be rendered 1`] = `
   style={
     Object {
       "backgroundColor": "#f8f7f7",
-      "left": "0",
+      "left": 0,
       "padding": "10px",
       "position": "fixed",
-      "right": "0",
-      "top": "0",
-      "zIndex": "100000",
+      "right": 0,
+      "top": 0,
+      "zIndex": 100000,
     }
   }
 >
@@ -32,7 +32,7 @@ exports[`CookieBannerContent component should be rendered 1`] = `
         Object {
           "color": "#000000",
           "fontSize": "10pt",
-          "fontWeight": "400",
+          "fontWeight": 400,
           "lineHeight": "130%",
           "minHeight": "32px",
           "padding": "10px 0",
@@ -73,7 +73,7 @@ exports[`CookieBannerContent component should be rendered 1`] = `
             "cursor": "pointer",
             "display": "inline-block",
             "fontSize": "10pt",
-            "fontWeight": "400",
+            "fontWeight": 400,
             "marginLeft": "5px",
             "marginRight": "5px",
             "minWidth": "80px",
@@ -99,7 +99,7 @@ exports[`CookieBannerContent component should be rendered 1`] = `
             "cursor": "pointer",
             "display": "inline-block",
             "fontSize": "10pt",
-            "fontWeight": "400",
+            "fontWeight": 400,
             "marginLeft": "5px",
             "marginRight": "5px",
             "minWidth": "80px",

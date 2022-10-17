@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
+import CookieBanner from './CookieBanner';
 import CookieBannerContent from './CookieBannerContent';
 import { useCookieBanner } from '../provides/cookieProviders';
 import { isServer } from '../helpers';
 
-const ReactCookieBanner = (props) => {
+const ReactCookieBanner = (props: React.ComponentProps<typeof CookieBanner>) => {
   const {
     preferencesDefaultChecked,
     statisticsDefaultChecked,
@@ -21,7 +21,7 @@ const ReactCookieBanner = (props) => {
   const [marketingCookie, setMarketingCookie] = useState(
     marketingDefaultChecked,
   );
-  const [, onSaveConsents, onAcceptAll] = useCookieBanner();
+  const { onSaveConsents, onAcceptAll } = useCookieBanner();
 
   useEffect(() => {
     if (isServer() || dismissOnScroll !== true) {
@@ -44,16 +44,16 @@ const ReactCookieBanner = (props) => {
     };
   }, []);
 
-  const onTogglePreferencesCookies = (e) => {
-    setPreferencesCookie(e.target.checked);
+  const onTogglePreferencesCookies = () => {
+    setPreferencesCookie((checked) => !checked);
   };
 
-  const onToggleStatisticsCookies = (e) => {
-    setStatisticsCookie(e.target.checked);
+  const onToggleStatisticsCookies = () => {
+    setStatisticsCookie((checked) => !checked);
   };
 
-  const onToggleMarketingCookies = (e) => {
-    setMarketingCookie(e.target.checked);
+  const onToggleMarketingCookies = () => {
+    setMarketingCookie((checked) => !checked);
   };
 
   const onSave = () => {
@@ -73,29 +73,6 @@ const ReactCookieBanner = (props) => {
   };
 
   return <CookieBannerContent {...props} {...contentProps} />;
-};
-
-ReactCookieBanner.protoTypes = {
-  className: PropTypes.string,
-  styles: PropTypes.object,
-  message: PropTypes.string.isRequired,
-  wholeDomain: PropTypes.bool,
-  policyLink: PropTypes.string,
-  privacyPolicyLinkText: PropTypes.string,
-  necessaryOptionText: PropTypes.string,
-  preferencesOptionText: PropTypes.string,
-  statisticsOptionText: PropTypes.string,
-  marketingOptionText: PropTypes.string,
-  acceptButtonText: PropTypes.string,
-  declineButtonText: PropTypes.string,
-  showDeclineButton: PropTypes.bool,
-  dismissOnScroll: PropTypes.bool,
-  showPreferencesOption: PropTypes.bool,
-  showStatisticsOption: PropTypes.bool,
-  showMarketingOption: PropTypes.bool,
-  preferencesDefaultChecked: PropTypes.bool,
-  statisticsDefaultChecked: PropTypes.bool,
-  marketingDefaultChecked: PropTypes.bool,
 };
 
 export default ReactCookieBanner;

@@ -1,5 +1,6 @@
 import React, { useState, useContext, createContext } from 'react';
 import { useCookies } from 'react-cookie';
+
 import { getExpirationDate } from '../helpers';
 
 const CONSENT_GIVEN = 'rcl_consent_given';
@@ -7,7 +8,23 @@ const PREFERENCES_COOKIE = 'rcl_preferences_consent';
 const STATISTICS_COOKIE = 'rcl_statistics_consent';
 const MARKETING_COOKIE = 'rcl_marketing_consent';
 
-const PreferencesContext = createContext();
+type ConsentField = 'preferences' | 'statistics' | 'marketing'
+
+interface Preferences {
+  consents: Record<'accepted' | ConsentField, boolean>
+  onSaveConsents: (consents: Partial<Record<ConsentField, boolean>>) => void
+  onAcceptAll: () => void
+}
+const PreferencesContext = createContext<Preferences>({
+  consents: {
+    accepted: false,
+    preferences: false,
+    statistics: false,
+    marketing: false,
+  },
+  onSaveConsents: () => undefined,
+  onAcceptAll: () => undefined,
+});
 
 const CookieBannerProvider = ({ children }) => {
   const [cookies, setCookie, removeCookie] = useCookies([
@@ -17,14 +34,14 @@ const CookieBannerProvider = ({ children }) => {
     MARKETING_COOKIE,
   ]);
 
-  const [consents, setConsents] = useState({
+  const [consents, setConsents] = useState<Preferences['consents']>({
     accepted: cookies[CONSENT_GIVEN] || false,
     preferences: cookies[PREFERENCES_COOKIE] || false,
     statistics: cookies[STATISTICS_COOKIE] || false,
     marketing: cookies[MARKETING_COOKIE] || false,
   });
 
-  const toggleCookie = (cookie, value = false) => {
+  const toggleCookie = (cookie: string, value = false) => {
     if (value) {
       setCookie(cookie, value, { expires: getExpirationDate() });
     } else {
@@ -36,7 +53,7 @@ const CookieBannerProvider = ({ children }) => {
     preferences = false,
     statistics = false,
     marketing = false,
-  }) => {
+  }: Partial<Record<ConsentField, boolean>>) => {
     toggleCookie(PREFERENCES_COOKIE, preferences);
     toggleCookie(STATISTICS_COOKIE, statistics);
     toggleCookie(MARKETING_COOKIE, marketing);

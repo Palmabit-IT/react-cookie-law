@@ -1,7 +1,20 @@
 import React from 'react';
 
-class CookieOption extends React.Component {
-  constructor(props) {
+interface Props {
+  checked?: boolean
+  onChange?: (checked: boolean) => void
+  id?: string
+  text?: string
+  styles?: Record<string, React.CSSProperties>
+  disabled?: boolean
+}
+
+interface State {
+  checked: boolean
+}
+
+class CookieOption extends React.Component<Props, State> {
+  constructor(props: Props) {
     super(props);
 
     const { checked = false } = props;
@@ -10,7 +23,7 @@ class CookieOption extends React.Component {
   }
 
   handleOnChange() {
-    const { onChange = () => {} } = this.props;
+    const { onChange = () => undefined } = this.props;
     const { checked } = this.state;
     const newValue = !checked;
 

@@ -24,7 +24,7 @@ describe('CookieBannerContent component', () => {
       statisticsOptionText: 'Statistics',
       marketingOptionText: 'Marketing',
       acceptButtonText: 'Accept all',
-      managePreferencesButtonText: 'Mange my cookies',
+      managePreferencesButtonText: 'Manage my cookies',
       savePreferencesButtonText: 'Save and close',
     };
 
@@ -49,7 +49,7 @@ describe('CookieBannerContent component', () => {
 
     component.find('.react-cookie-law-manage-btn').simulate('click');
 
-    expect(component.contains(<CookieBannerPreferences {...props} />)).toBeTruthy();
+    expect(component.contains(<CookieBannerPreferences />)).toBeTruthy();
   });
 
   test('should click confirm button', () => {
